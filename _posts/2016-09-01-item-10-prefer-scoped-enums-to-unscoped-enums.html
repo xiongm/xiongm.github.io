@@ -1,0 +1,49 @@
+---
+layout: post
+title: 'Item 10: Prefer scoped enums to unscoped enums'
+date: 2016-09-01 19:54:55.000000000 -04:00
+type: post
+published: true
+status: publish
+categories: []
+tags:
+- modernc++
+meta:
+  _rest_api_published: '1'
+  _rest_api_client_id: '-1'
+  _publicize_job_id: '26387976698'
+author:
+  login: cowboybebop98
+  email: xiongm@gmail.com
+  display_name: cowboybebop98
+  first_name: ''
+  last_name: ''
+---
+<blockquote>
+<h3>scoped enums, aka class enums, are visible only within the enum.</h3>
+</blockquote>
+<p>[code language="cpp"]<br />
+enum Color {red, blue, yellow}; // c++98 style<br />
+auto red = false; // error, white has been declared<br />
+color c = red; // fine!</p>
+<p>enum class Color {red, blue, yellow}; // c++ 11<br />
+auto red = true; // fine!</p>
+<p>color c = red; // error, red doesn't exist in current scope<br />
+color c = Color::red; // fine<br />
+[/code]</p>
+<blockquote>
+<h3>scoped enums can be forward declared, non-scoped enums can't</h3>
+</blockquote>
+<p>[code language="cpp"]<br />
+enum Color; // doesn't work<br />
+enum Class Color; // fine<br />
+[/code]</p>
+<blockquote>
+<h3>strongly typed, no implicit conversion like non-scoped enums</h3>
+</blockquote>
+<p>[code language="cpp"]</p>
+<p>enum class Color {red, blue, yellow};<br />
+Color c = Color::red;<br />
+bool is_less_than = c &lt; 14.5 ? true: false; // error! no implicit conversion to double<br />
+bool is_less_than = static_cast&lt;c&gt; &lt; 14.5? true : false; // fine</p>
+<p>[/code]</p>

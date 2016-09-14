@@ -1,0 +1,45 @@
+---
+layout: post
+title: 'Item 15: Use constexpr whenever possible.'
+date: 2016-09-03 03:21:17.000000000 -04:00
+type: post
+published: true
+status: publish
+categories: []
+tags:
+- modernc++
+meta:
+  _rest_api_published: '1'
+  _rest_api_client_id: '-1'
+  _publicize_job_id: '26433735877'
+author:
+  login: cowboybebop98
+  email: xiongm@gmail.com
+  display_name: cowboybebop98
+  first_name: ''
+  last_name: ''
+---
+<blockquote>
+<h3 class="p1"><span class="s1">constexpr </span>objects are <span class="s1">const </span>and are initialized with values known during compilation.</h3>
+</blockquote>
+<p>[code language="cpp"]<br />
+int sz;<br />
+constexpr int size = sz; // error, sz not known at compile time<br />
+array&lt;int, size&gt; data; // error, size not known<br />
+constexpr int size2 = 10; //fine, known at compile time<br />
+array&lt;int, size2&gt; data2; // fine<br />
+[/code]</p>
+<blockquote>
+<h3 class="p1"><span class="s1">constexpr </span>functions can produce compile-time results when called with arguments whose values are known during compilation, but can also be used to produce run-time results when arguments are not known during compilation.</h3>
+</blockquote>
+<p>[code language="cpp"]<br />
+constexpr int pow(int num, int exp) noexcept<br />
+{<br />
+return exp? num * pow(num, exp - 1) : 1;<br />
+}</p>
+<p>constexpr auto exp = 3;<br />
+array&lt;int, pow(3, exp)&gt; results; // compile time pow</p>
+<p>int pow = readPow();<br />
+int exp = readExp();<br />
+int result  = pow(pow, exp); // run time pow<br />
+[/code]</p>

@@ -1,0 +1,45 @@
+---
+layout: post
+title: 'Item 9: Prefer alias declarations to typedefs'
+date: 2016-09-01 19:22:48.000000000 -04:00
+type: post
+published: true
+status: publish
+categories: []
+tags:
+- modernc++
+meta:
+  _rest_api_published: '1'
+  _rest_api_client_id: '-1'
+  _publicize_job_id: '26387074040'
+author:
+  login: cowboybebop98
+  email: xiongm@gmail.com
+  display_name: cowboybebop98
+  first_name: ''
+  last_name: ''
+---
+<blockquote>
+<h3>alias is easier to swallow than typedef in some situations</h3>
+</blockquote>
+<p>[code language="cpp"]<br />
+typedef void (*FP) (int i, string s); // bad<br />
+using FP = void (*)(int i, string s); // good!<br />
+[/code]</p>
+<blockquote>
+<h3 class="p1"><span class="s1">typedef</span>s don’t support templatization directly, but alias declarations do.</h3>
+</blockquote>
+<p>[code language="cpp"]<br />
+template &lt;typename T, typename Comp&gt;<br />
+using MyPQ = priority_queue&lt;T, vector&lt;T&gt;, Comp&gt;; // good!</p>
+<p>auto comp = [](int lhs, int rhs) {<br />
+return lhs &lt; rhs;<br />
+};<br />
+MyPQ&lt;int, decltype(comp)&gt; pq(comp);</p>
+<p>template &lt;typename T, typename Comp&gt;<br />
+struct MyPQ<br />
+{<br />
+typedef priority_queue&lt;T, vector&lt;T&gt;, Comp&gt;::type; // works, but not as good<br />
+};</p>
+<p>MyPQ&lt;T, decltype(comp)&gt;::type pq(comp);<br />
+[/code]</p>

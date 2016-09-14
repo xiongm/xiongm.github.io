@@ -1,0 +1,49 @@
+---
+layout: post
+title: 'Item 2: Understand auto type deduction'
+date: 2016-08-30 05:26:06.000000000 -04:00
+type: post
+published: true
+status: publish
+categories: []
+tags:
+- modernc++
+meta:
+  _publicize_job_id: '26290293739'
+  _rest_api_client_id: '-1'
+  _rest_api_published: '1'
+author:
+  login: cowboybebop98
+  email: xiongm@gmail.com
+  display_name: cowboybebop98
+  first_name: ''
+  last_name: ''
+---
+<blockquote>
+<h3>auto type deduction IS template type deduction, for the most part</h3>
+</blockquote>
+<p>This is why we discuss template type deduction in <a href="https://cowboybebop98.wordpress.com/2016/08/28/item-1-understand-template-type-deduction/">Item1</a> before we start digging into auto type deduction. Recall in template type deduction, provided a function template</p>
+<p>[code language="cpp"]</p>
+<p>template &lt;typename T&gt;</p>
+<p>void f(ParamType param)</p>
+<p>[/code]</p>
+<p>we use <em>expr</em> in</p>
+<p>[code language="cpp"]</p>
+<p>f(expr)</p>
+<p>[/code]</p>
+<p>to deduce type of T and ParamType.</p>
+<p>Now for a auto type definition</p>
+<p>[code language="cpp"]</p>
+<p>auto x = 10; // x is int</p>
+<p>auto &amp; y = x; // what is type of y?</p>
+<p>[/code]</p>
+<p>If you think of auto as T, and the specifier for auto as ParamType, 10 as the <em>expr, then deducing type of y for the above definition becomes deducing ParamType of the param given function template</em></p>
+<p>[code language="cpp"]</p>
+<p>template &lt;typename T&gt;</p>
+<p>f(T &amp; param)</p>
+<p>[/code]</p>
+<p>and the <em>expr</em></p>
+<p>[code language="cpp"]</p>
+<p>f(x)</p>
+<p>[/code]</p>
+<p>We know x is int, so T is int, and param's type is int &amp;, so y's type is int &amp;.</p>
