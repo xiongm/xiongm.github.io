@@ -3,8 +3,8 @@
 	<channel>
 		<title>Cowboybebop's Notes</title>
 		<description>Software Developer</description>
-		<link>http://xiongm.github.io</link>
-		<atom:link href="http://xiongm.github.io/feed.xml" rel="self" type="application/rss+xml" />
+		<link>https://xiongm.github.io</link>
+		<atom:link href="https://xiongm.github.io/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
 				<title>Item 22: When using the Pimpl Idiom, define special member functions in the implementation file</title>
@@ -15,8 +15,8 @@
 
 </description>
 				<pubDate>Mon, 12 Sep 2016 02:06:47 -0400</pubDate>
-				<link>http://xiongm.github.io/2016/09/item-22-when-using-the-pimpl-idiom-define-special-member-functions-in-the-implementation-file</link>
-				<guid isPermaLink="true">http://xiongm.github.io/2016/09/item-22-when-using-the-pimpl-idiom-define-special-member-functions-in-the-implementation-file</guid>
+				<link>https://xiongm.github.io/2016/09/item-22-when-using-the-pimpl-idiom-define-special-member-functions-in-the-implementation-file</link>
+				<guid isPermaLink="true">https://xiongm.github.io/2016/09/item-22-when-using-the-pimpl-idiom-define-special-member-functions-in-the-implementation-file</guid>
 			</item>
 		
 			<item>
@@ -34,8 +34,8 @@
 
 </description>
 				<pubDate>Mon, 12 Sep 2016 02:04:56 -0400</pubDate>
-				<link>http://xiongm.github.io/2016/09/item-21-prefer-stdmake_unique-and-stdmake_shared-to-direct-use-of-new</link>
-				<guid isPermaLink="true">http://xiongm.github.io/2016/09/item-21-prefer-stdmake_unique-and-stdmake_shared-to-direct-use-of-new</guid>
+				<link>https://xiongm.github.io/2016/09/item-21-prefer-stdmake_unique-and-stdmake_shared-to-direct-use-of-new</link>
+				<guid isPermaLink="true">https://xiongm.github.io/2016/09/item-21-prefer-stdmake_unique-and-stdmake_shared-to-direct-use-of-new</guid>
 			</item>
 		
 			<item>
@@ -67,8 +67,8 @@
 
 </description>
 				<pubDate>Mon, 12 Sep 2016 02:00:12 -0400</pubDate>
-				<link>http://xiongm.github.io/2016/09/item-20-use-stdweak_ptr-for-stdshared_ptr-like-pointers-that-can-dangle</link>
-				<guid isPermaLink="true">http://xiongm.github.io/2016/09/item-20-use-stdweak_ptr-for-stdshared_ptr-like-pointers-that-can-dangle</guid>
+				<link>https://xiongm.github.io/2016/09/item-20-use-stdweak_ptr-for-stdshared_ptr-like-pointers-that-can-dangle</link>
+				<guid isPermaLink="true">https://xiongm.github.io/2016/09/item-20-use-stdweak_ptr-for-stdshared_ptr-like-pointers-that-can-dangle</guid>
 			</item>
 		
 			<item>
@@ -115,8 +115,8 @@ Another way to introduce this kind of duplicate-control-block issue has to do wi
 
 </description>
 				<pubDate>Mon, 12 Sep 2016 01:12:28 -0400</pubDate>
-				<link>http://xiongm.github.io/2016/09/item-19-use-stdshared_ptr-for-shared-ownership-resource-management</link>
-				<guid isPermaLink="true">http://xiongm.github.io/2016/09/item-19-use-stdshared_ptr-for-shared-ownership-resource-management</guid>
+				<link>https://xiongm.github.io/2016/09/item-19-use-stdshared_ptr-for-shared-ownership-resource-management</link>
+				<guid isPermaLink="true">https://xiongm.github.io/2016/09/item-19-use-stdshared_ptr-for-shared-ownership-resource-management</guid>
 			</item>
 		
 			<item>
@@ -168,8 +168,8 @@ A: elements in STL container need to be copy constructible and copy assignable, 
  &lt;/p&gt;
 </description>
 				<pubDate>Sun, 11 Sep 2016 22:12:48 -0400</pubDate>
-				<link>http://xiongm.github.io/2016/09/item-18-use-stdunique_ptr-for-exclusive-ownership-resource-management</link>
-				<guid isPermaLink="true">http://xiongm.github.io/2016/09/item-18-use-stdunique_ptr-for-exclusive-ownership-resource-management</guid>
+				<link>https://xiongm.github.io/2016/09/item-18-use-stdunique_ptr-for-exclusive-ownership-resource-management</link>
+				<guid isPermaLink="true">https://xiongm.github.io/2016/09/item-18-use-stdunique_ptr-for-exclusive-ownership-resource-management</guid>
 			</item>
 		
 			<item>
@@ -190,8 +190,8 @@ A: elements in STL container need to be copy constructible and copy assignable, 
 
 </description>
 				<pubDate>Tue, 06 Sep 2016 01:46:53 -0400</pubDate>
-				<link>http://xiongm.github.io/2016/09/item-17-understand-special-member-function-generation</link>
-				<guid isPermaLink="true">http://xiongm.github.io/2016/09/item-17-understand-special-member-function-generation</guid>
+				<link>https://xiongm.github.io/2016/09/item-17-understand-special-member-function-generation</link>
+				<guid isPermaLink="true">https://xiongm.github.io/2016/09/item-17-understand-special-member-function-generation</guid>
 			</item>
 		
 			<item>
@@ -218,8 +218,8 @@ A: elements in STL container need to be copy constructible and copy assignable, 
 
 </description>
 				<pubDate>Sat, 03 Sep 2016 03:21:17 -0400</pubDate>
-				<link>http://xiongm.github.io/2016/09/item-15-use-constexpr-whenever-possible</link>
-				<guid isPermaLink="true">http://xiongm.github.io/2016/09/item-15-use-constexpr-whenever-possible</guid>
+				<link>https://xiongm.github.io/2016/09/item-15-use-constexpr-whenever-possible</link>
+				<guid isPermaLink="true">https://xiongm.github.io/2016/09/item-15-use-constexpr-whenever-possible</guid>
 			</item>
 		
 			<item>
@@ -247,8 +247,8 @@ A: elements in STL container need to be copy constructible and copy assignable, 
 
 </description>
 				<pubDate>Fri, 02 Sep 2016 20:41:23 -0400</pubDate>
-				<link>http://xiongm.github.io/2016/09/item-14-declare-functions-noexcept-if-they-wont-emit-exceptions</link>
-				<guid isPermaLink="true">http://xiongm.github.io/2016/09/item-14-declare-functions-noexcept-if-they-wont-emit-exceptions</guid>
+				<link>https://xiongm.github.io/2016/09/item-14-declare-functions-noexcept-if-they-wont-emit-exceptions</link>
+				<guid isPermaLink="true">https://xiongm.github.io/2016/09/item-14-declare-functions-noexcept-if-they-wont-emit-exceptions</guid>
 			</item>
 		
 			<item>
@@ -305,8 +305,8 @@ A: elements in STL container need to be copy constructible and copy assignable, 
 
 </description>
 				<pubDate>Fri, 02 Sep 2016 02:22:17 -0400</pubDate>
-				<link>http://xiongm.github.io/2016/09/item-12-override-specifier-and-member-function-reference-specifiers</link>
-				<guid isPermaLink="true">http://xiongm.github.io/2016/09/item-12-override-specifier-and-member-function-reference-specifiers</guid>
+				<link>https://xiongm.github.io/2016/09/item-12-override-specifier-and-member-function-reference-specifiers</link>
+				<guid isPermaLink="true">https://xiongm.github.io/2016/09/item-12-override-specifier-and-member-function-reference-specifiers</guid>
 			</item>
 		
 			<item>
@@ -341,8 +341,8 @@ A: elements in STL container need to be copy constructible and copy assignable, 
 &lt;p&gt; &lt;/p&gt;
 </description>
 				<pubDate>Thu, 01 Sep 2016 20:10:31 -0400</pubDate>
-				<link>http://xiongm.github.io/2016/09/prefer-deleted-functions-to-private-undefined-ones</link>
-				<guid isPermaLink="true">http://xiongm.github.io/2016/09/prefer-deleted-functions-to-private-undefined-ones</guid>
+				<link>https://xiongm.github.io/2016/09/prefer-deleted-functions-to-private-undefined-ones</link>
+				<guid isPermaLink="true">https://xiongm.github.io/2016/09/prefer-deleted-functions-to-private-undefined-ones</guid>
 			</item>
 		
 	</channel>
