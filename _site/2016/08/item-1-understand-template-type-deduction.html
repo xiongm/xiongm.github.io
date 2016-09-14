@@ -5,14 +5,14 @@
   <title>Cowboybebop's Notes</title>
   <meta name="theme-color" content="#222222" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="http://localhost:4000/js/jquery.min.js"></script>
-  <script src="http://localhost:4000/js/bootstrap.min.js"></script>
-  <script src="http://localhost:4000/js/header.js"></script>
-  <script src="http://localhost:4000/js/toc.js"></script>
-  <link href="http://localhost:4000/css/bootstrap.min.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/theme.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/syntax.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://xiongm.github.io/js/jquery.min.js"></script>
+  <script src="https://xiongm.github.io/js/bootstrap.min.js"></script>
+  <script src="https://xiongm.github.io/js/header.js"></script>
+  <script src="https://xiongm.github.io/js/toc.js"></script>
+  <link href="https://xiongm.github.io/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/theme.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/syntax.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -47,14 +47,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="http://localhost:4000/">Cowboybebop's Notes</a>
+        <a class="navbar-brand" href="https://xiongm.github.io/">Cowboybebop's Notes</a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><a href="http://localhost:4000/">/home</a></li>
-          <li><a href="http://localhost:4000/archive.html">/archive</a></li>
-          <li><a href="http://localhost:4000/tags.html">/tags</a></li>
-          <li><a href="http://localhost:4000/about.html">/about</a></li>
+          <li><a href="https://xiongm.github.io/">/home</a></li>
+          <li><a href="https://xiongm.github.io/archive.html">/archive</a></li>
+          <li><a href="https://xiongm.github.io/tags.html">/tags</a></li>
+          <li><a href="https://xiongm.github.io/about.html">/about</a></li>
         </ul>
       </div>
     </div>
@@ -68,7 +68,7 @@
         <div class="col-md-8">
           <div class="article">
             <div class="well">
-              <h1><a href="http://localhost:4000/2016/08/item-1-understand-template-type-deduction">Item 1 Understand template type deduction</a></h1>
+              <h1><a href="https://xiongm.github.io/2016/08/item-1-understand-template-type-deduction">Item 1 Understand template type deduction</a></h1>
               <div class="post-meta">
                 <div class="post-time">
                   <i class="fa fa-calendar"></i>
@@ -76,65 +76,60 @@
                 </div>
                 <ul>
                   
-                    <li><a href="http://localhost:4000/tag/C++">C++</a></li>
+                    <li><a href="https://xiongm.github.io/tag/C++">C++</a></li>
                   
-                    <li><a href="http://localhost:4000/tag/modernc++">modernc++</a></li>
+                    <li><a href="https://xiongm.github.io/tag/modernc++">modernc++</a></li>
                   
                 </ul>
               </div>
               <div class="post-content">
                 <div id="toc" class="toc"></div>
                 <p>Function template looks like the following</p>
-<p>[code language="cpp"]<br />
-template &lt;typename T&gt;<br />
-void f(ParamType param)<br />
-[/code]</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">f</span><span class="p">(</span><span class="n">ParamType</span> <span class="n">param</span><span class="p">)</span></code></pre></figure>
+
 <p>A call to the function looks like this</p>
-<p>[code language="cpp"]<br />
-f(expr)<br />
-[/code]</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">f</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span></code></pre></figure>
+
 <p>During compilation, compiler use expr to deduce types for both T and ParamType and they are usually different. Following are some of the key knowledge points with examples. The quoted messages are from Modern Effective C++ by scott meyers</p>
-<blockquote>
-<h3><em>During template type deduction, arguments that are references are treated as non reference</em></h3>
-</blockquote>
-<p>[code language="cpp"]<br />
-template &lt;typename T&gt;<br />
-void f(T &amp; param)</p>
-<p>int x = 10;<br />
-int &amp; y = x;<br />
-const int z = 15</p>
-<p>f(x) // T is int, param's type is int &amp;<br />
-f(y) // T is int, param's type is int &amp;.<br />
-// Note that y's reference-ness is ignored<br />
-f(z) // T is const int, param's type is const int &amp;<br />
-[/code]</p>
-<blockquote>
-<h3>When deducing types for universal reference parameters, lvalue arguments get special treatment.</h3>
-</blockquote>
-<p>[code language="cpp"]<br />
-template &lt;typename T&gt;<br />
-void f(T &amp;&amp; param)    // universal reference, yes it looks just like rvalue reference</p>
-<p>int x = 10;<br />
-const int y = x;</p>
-<p>// x is a lvalue, when deduced, T is translates to int &amp;<br />
-// so is param's type<br />
-// the only situation in which a expr is deduced to a<br />
-// reference type<br />
-f(x)<br />
-f(y) // similarly, T is const int &amp;, so is param's type<br />
-[/code]</p>
-<blockquote>
-<h3>When deducing types for by-value parameters, const and/or volatile arguments<br />
-are treated as non-const and non-volatile.</h3>
-</blockquote>
-<p>[code language="cpp"]<br />
-template &lt;typename T&gt;<br />
-void f(T param) // pass by value</p>
-<p>int x = 10;<br />
-const int y = x;</p>
-<p>f(x) // T is int, so is param's type<br />
-f(y) // T is int, so is param's type, notice how const is ignored<br />
-[/code]</p>
+
+<p>During template type deduction, arguments that are references are treated as non reference</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">f</span><span class="p">(</span><span class="n">T</span> <span class="o">&amp;</span> <span class="n">param</span><span class="p">)</span>
+<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span> <span class="o">&amp;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1">// T is int, param's type is int &amp;
+</span><span class="n">f</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1">// T is int, param's type is int &amp;.
+// Note that y's reference-ness is ignored
+</span><span class="n">f</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">//</span> <span class="n">T</span> <span class="n">is</span> <span class="k">const</span> <span class="kt">int</span><span class="p">,</span> <span class="n">param</span><span class="err">'</span><span class="n">s</span> <span class="n">type</span> <span class="n">is</span> <span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span></code></pre></figure>
+
+<p>When deducing types for universal reference parameters, lvalue arguments get special treatment.</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">f</span><span class="p">(</span><span class="n">T</span> <span class="o">&amp;&amp;</span> <span class="n">param</span><span class="p">)</span>    <span class="c1">// universal reference, yes it looks just like rvalue reference
+</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+<span class="c1">// x is a lvalue, when deduced, T is translates to int &amp;
+// so is param's type
+// the only situation in which a expr is deduced to a
+// reference type
+</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">f</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">//</span> <span class="n">similarly</span><span class="p">,</span> <span class="n">T</span> <span class="n">is</span> <span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="p">,</span> <span class="n">so</span> <span class="n">is</span> <span class="n">param</span><span class="err">'</span><span class="n">s</span> <span class="n">type</span></code></pre></figure>
+
+<p>When deducing types for by-value parameters, const and/or volatile arguments<br />
+are treated as non-const and non-volatile.</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">f</span><span class="p">(</span><span class="n">T</span> <span class="n">param</span><span class="p">)</span> <span class="c1">// pass by value
+</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+<span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1">// T is int, so is param's type
+</span><span class="n">f</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">//</span> <span class="n">T</span> <span class="n">is</span> <span class="kt">int</span><span class="p">,</span> <span class="n">so</span> <span class="n">is</span> <span class="n">param</span><span class="err">'</span><span class="n">s</span> <span class="n">type</span><span class="p">,</span> <span class="n">notice</span> <span class="n">how</span> <span class="k">const</span> <span class="n">is</span> <span class="n">ignored</span></code></pre></figure>
+
 
                 
 

@@ -21,7 +21,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-<blockquote>
-<h3 class="p1">• The Pimpl Idiom decreases build times by reducing compilation dependencies between class clients and class implementations.</h3>
-<h3 class="p1">• For <span class="s1">std::unique_ptr pImpl </span>pointers, declare special member functions in the class header, but implement them in the implementation file. Do this even if the default function implementations are acceptable.</h3>
-</blockquote>
+
+>  The Pimpl Idiom decreases build times by reducing compilation dependencies between class clients and class implementations.
+  For std::unique_ptr pImpl pointers, declare special member functions in the class header, but implement them in the implementation file. Do this even if the default function implementations are acceptable.
+

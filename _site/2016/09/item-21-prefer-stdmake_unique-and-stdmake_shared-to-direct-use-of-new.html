@@ -5,14 +5,14 @@
   <title>Cowboybebop's Notes</title>
   <meta name="theme-color" content="#222222" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="http://localhost:4000/js/jquery.min.js"></script>
-  <script src="http://localhost:4000/js/bootstrap.min.js"></script>
-  <script src="http://localhost:4000/js/header.js"></script>
-  <script src="http://localhost:4000/js/toc.js"></script>
-  <link href="http://localhost:4000/css/bootstrap.min.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/theme.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/syntax.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://xiongm.github.io/js/jquery.min.js"></script>
+  <script src="https://xiongm.github.io/js/bootstrap.min.js"></script>
+  <script src="https://xiongm.github.io/js/header.js"></script>
+  <script src="https://xiongm.github.io/js/toc.js"></script>
+  <link href="https://xiongm.github.io/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/theme.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/syntax.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -47,14 +47,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="http://localhost:4000/">Cowboybebop's Notes</a>
+        <a class="navbar-brand" href="https://xiongm.github.io/">Cowboybebop's Notes</a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><a href="http://localhost:4000/">/home</a></li>
-          <li><a href="http://localhost:4000/archive.html">/archive</a></li>
-          <li><a href="http://localhost:4000/tags.html">/tags</a></li>
-          <li><a href="http://localhost:4000/about.html">/about</a></li>
+          <li><a href="https://xiongm.github.io/">/home</a></li>
+          <li><a href="https://xiongm.github.io/archive.html">/archive</a></li>
+          <li><a href="https://xiongm.github.io/tags.html">/tags</a></li>
+          <li><a href="https://xiongm.github.io/about.html">/about</a></li>
         </ul>
       </div>
     </div>
@@ -68,7 +68,7 @@
         <div class="col-md-8">
           <div class="article">
             <div class="well">
-              <h1><a href="http://localhost:4000/2016/09/item-21-prefer-stdmake_unique-and-stdmake_shared-to-direct-use-of-new">Item 21 Prefer std::make_unique and std::make_shared to direct use of new.</a></h1>
+              <h1><a href="https://xiongm.github.io/2016/09/item-21-prefer-stdmake_unique-and-stdmake_shared-to-direct-use-of-new">Item 21 Prefer std::make_unique and std::make_shared to direct use of new.</a></h1>
               <div class="post-meta">
                 <div class="post-time">
                   <i class="fa fa-calendar"></i>
@@ -76,19 +76,23 @@
                 </div>
                 <ul>
                   
-                    <li><a href="http://localhost:4000/tag/modernc++">modernc++</a></li>
+                    <li><a href="https://xiongm.github.io/tag/modernc++">modernc++</a></li>
                   
                 </ul>
               </div>
               <div class="post-content">
                 <div id="toc" class="toc"></div>
-                <blockquote>
-<h3 class="p1">Compared to direct use of <span class="s1">new</span>, <span class="s1">make </span>functions eliminate source code duplication,provides cleaner, concise codes, improve exception safety, and, for <span class="s1">std::make_shared </span>and <span class="s1">std::allo</span><span class="s1">cate_shared</span>, generate code that’s smaller and faster.</h3>
-</blockquote>
+                <p>Compared to direct use of new, make functions eliminate source code duplication,provides cleaner, concise codes, improve exception safety, and, for std::make_shared and std::allocate_shared, generate code that s smaller and faster.</p>
+
 <ul>
-<li>exception safety - by merging two steps (object creation followed by shared_ptr creation) into one, eliminates potential memory leak</li>
-<li>faster code - by making one memory allocation requests to system</li>
+  <li>
+    <p>exception safety - by merging two steps (object creation followed by shared_ptr creation) into one, eliminates potential memory leak</p>
+  </li>
+  <li>
+    <p>faster code - by making one memory allocation requests to system</p>
+  </li>
 </ul>
+
 
                 
 

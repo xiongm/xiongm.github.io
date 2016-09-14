@@ -5,14 +5,14 @@
   <title>Cowboybebop's Notes</title>
   <meta name="theme-color" content="#222222" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="http://localhost:4000/js/jquery.min.js"></script>
-  <script src="http://localhost:4000/js/bootstrap.min.js"></script>
-  <script src="http://localhost:4000/js/header.js"></script>
-  <script src="http://localhost:4000/js/toc.js"></script>
-  <link href="http://localhost:4000/css/bootstrap.min.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/theme.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/syntax.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://xiongm.github.io/js/jquery.min.js"></script>
+  <script src="https://xiongm.github.io/js/bootstrap.min.js"></script>
+  <script src="https://xiongm.github.io/js/header.js"></script>
+  <script src="https://xiongm.github.io/js/toc.js"></script>
+  <link href="https://xiongm.github.io/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/theme.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/syntax.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -47,14 +47,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="http://localhost:4000/">Cowboybebop's Notes</a>
+        <a class="navbar-brand" href="https://xiongm.github.io/">Cowboybebop's Notes</a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><a href="http://localhost:4000/">/home</a></li>
-          <li><a href="http://localhost:4000/archive.html">/archive</a></li>
-          <li><a href="http://localhost:4000/tags.html">/tags</a></li>
-          <li><a href="http://localhost:4000/about.html">/about</a></li>
+          <li><a href="https://xiongm.github.io/">/home</a></li>
+          <li><a href="https://xiongm.github.io/archive.html">/archive</a></li>
+          <li><a href="https://xiongm.github.io/tags.html">/tags</a></li>
+          <li><a href="https://xiongm.github.io/about.html">/about</a></li>
         </ul>
       </div>
     </div>
@@ -68,7 +68,7 @@
         <div class="col-md-8">
           <div class="article">
             <div class="well">
-              <h1><a href="http://localhost:4000/2016/09/item-9-prefer-alias-declarations-to-typedefs">Item 9: Prefer alias declarations to typedefs</a></h1>
+              <h1><a href="https://xiongm.github.io/2016/09/item-9-prefer-alias-declarations-to-typedefs">Item 9: Prefer alias declarations to typedefs</a></h1>
               <div class="post-meta">
                 <div class="post-time">
                   <i class="fa fa-calendar"></i>
@@ -76,36 +76,32 @@
                 </div>
                 <ul>
                   
-                    <li><a href="http://localhost:4000/tag/modernc++">modernc++</a></li>
+                    <li><a href="https://xiongm.github.io/tag/modernc++">modernc++</a></li>
                   
                 </ul>
               </div>
               <div class="post-content">
                 <div id="toc" class="toc"></div>
-                <blockquote>
-<h3>alias is easier to swallow than typedef in some situations</h3>
-</blockquote>
-<p>[code language="cpp"]<br />
-typedef void (*FP) (int i, string s); // bad<br />
-using FP = void (*)(int i, string s); // good!<br />
-[/code]</p>
-<blockquote>
-<h3 class="p1"><span class="s1">typedef</span>s don’t support templatization directly, but alias declarations do.</h3>
-</blockquote>
-<p>[code language="cpp"]<br />
-template &lt;typename T, typename Comp&gt;<br />
-using MyPQ = priority_queue&lt;T, vector&lt;T&gt;, Comp&gt;; // good!</p>
-<p>auto comp = [](int lhs, int rhs) {<br />
-return lhs &lt; rhs;<br />
-};<br />
-MyPQ&lt;int, decltype(comp)&gt; pq(comp);</p>
-<p>template &lt;typename T, typename Comp&gt;<br />
-struct MyPQ<br />
-{<br />
-typedef priority_queue&lt;T, vector&lt;T&gt;, Comp&gt;::type; // works, but not as good<br />
-};</p>
-<p>MyPQ&lt;T, decltype(comp)&gt;::type pq(comp);<br />
-[/code]</p>
+                <p>alias is easier to swallow than typedef in some situations</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">typedef</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">FP</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">string</span> <span class="n">s</span><span class="p">);</span> <span class="c1">// bad
+</span><span class="k">using</span> <span class="n">FP</span> <span class="o">=</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">string</span> <span class="n">s</span><span class="p">);</span> <span class="o">//</span> <span class="n">good</span><span class="o">!</span></code></pre></figure>
+
+<p>typedefs don t support templatization directly, but alias declarations do.</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Comp</span><span class="o">&gt;</span>
+<span class="k">using</span> <span class="n">MyPQ</span> <span class="o">=</span> <span class="n">priority_queue</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">Comp</span><span class="o">&gt;</span><span class="p">;</span> <span class="c1">// good!
+</span><span class="k">auto</span> <span class="n">comp</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">lhs</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">return</span> <span class="n">lhs</span> <span class="o">&lt;</span> <span class="n">rhs</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="n">MyPQ</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="k">decltype</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">pq</span><span class="p">(</span><span class="n">comp</span><span class="p">);</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Comp</span><span class="o">&gt;</span>
+<span class="k">struct</span> <span class="n">MyPQ</span>
+<span class="p">{</span>
+<span class="k">typedef</span> <span class="n">priority_queue</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">Comp</span><span class="o">&gt;::</span><span class="n">type</span><span class="p">;</span> <span class="c1">// works, but not as good
+</span><span class="p">};</span>
+<span class="n">MyPQ</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="k">decltype</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span><span class="o">&gt;::</span><span class="n">type</span> <span class="n">pq</span><span class="p">(</span><span class="n">comp</span><span class="p">);</span></code></pre></figure>
+
 
                 
 

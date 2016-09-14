@@ -70,7 +70,7 @@ img + em {
 
 blockquote {
   color: #bbb;
-  font-size: 1em; }
+  font-size: 18px; }
 
 .center-image {
   margin: 0 auto;
@@ -143,8 +143,12 @@ ul.share-buttons {
     transform: scale(1.3, 1.3); }
 
 h2.post-title {
-  padding-top: 10px;
-  text-align: left; }
+  padding-top: 5px;
+  text-align: left;
+  font-size: 1.6em; }
+
+div.post-content {
+  font-size: 16px; }
 
 div.post-meta {
   border: 1px solid #666666;

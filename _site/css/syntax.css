@@ -8,6 +8,7 @@
   .highlight pre {
     position: relative;
     margin: 0;
+    font-size: 15px;
     padding: 1em;
     overflow-x: auto;
     word-wrap: normal;

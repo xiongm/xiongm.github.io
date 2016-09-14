@@ -3,347 +3,346 @@
 	<channel>
 		<title>Cowboybebop's Notes</title>
 		<description>Software Developer</description>
-		<link>http://localhost:4000</link>
-		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+		<link>https://xiongm.github.io</link>
+		<atom:link href="https://xiongm.github.io/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
 				<title>Item 22: When using the Pimpl Idiom, define special member functions in the implementation file</title>
 				<description>&lt;blockquote&gt;
-&lt;h3 class=&quot;p1&quot;&gt;• The Pimpl Idiom decreases build times by reducing compilation dependencies between class clients and class implementations.&lt;/h3&gt;
-&lt;h3 class=&quot;p1&quot;&gt;• For &lt;span class=&quot;s1&quot;&gt;std::unique_ptr pImpl &lt;/span&gt;pointers, declare special member functions in the class header, but implement them in the implementation file. Do this even if the default function implementations are acceptable.&lt;/h3&gt;
+  &lt;p&gt;The Pimpl Idiom decreases build times by reducing compilation dependencies between class clients and class implementations.&lt;br /&gt;
+  For std::unique_ptr pImpl pointers, declare special member functions in the class header, but implement them in the implementation file. Do this even if the default function implementations are acceptable.&lt;/p&gt;
 &lt;/blockquote&gt;
+
 </description>
 				<pubDate>Mon, 12 Sep 2016 02:06:47 -0400</pubDate>
-				<link>http://localhost:4000/2016/09/item-22-when-using-the-pimpl-idiom-define-special-member-functions-in-the-implementation-file</link>
-				<guid isPermaLink="true">http://localhost:4000/2016/09/item-22-when-using-the-pimpl-idiom-define-special-member-functions-in-the-implementation-file</guid>
+				<link>https://xiongm.github.io/2016/09/item-22-when-using-the-pimpl-idiom-define-special-member-functions-in-the-implementation-file</link>
+				<guid isPermaLink="true">https://xiongm.github.io/2016/09/item-22-when-using-the-pimpl-idiom-define-special-member-functions-in-the-implementation-file</guid>
 			</item>
 		
 			<item>
 				<title>Item 21 Prefer std::make_unique and std::make_shared to direct use of new.</title>
-				<description>&lt;blockquote&gt;
-&lt;h3 class=&quot;p1&quot;&gt;Compared to direct use of &lt;span class=&quot;s1&quot;&gt;new&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;make &lt;/span&gt;functions eliminate source code duplication,provides cleaner, concise codes, improve exception safety, and, for &lt;span class=&quot;s1&quot;&gt;std::make_shared &lt;/span&gt;and &lt;span class=&quot;s1&quot;&gt;std::allo&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;cate_shared&lt;/span&gt;, generate code that’s smaller and faster.&lt;/h3&gt;
-&lt;/blockquote&gt;
+				<description>&lt;p&gt;Compared to direct use of new, make functions eliminate source code duplication,provides cleaner, concise codes, improve exception safety, and, for std::make_shared and std::allocate_shared, generate code that s smaller and faster.&lt;/p&gt;
+
 &lt;ul&gt;
-&lt;li&gt;exception safety - by merging two steps (object creation followed by shared_ptr creation) into one, eliminates potential memory leak&lt;/li&gt;
-&lt;li&gt;faster code - by making one memory allocation requests to system&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;exception safety - by merging two steps (object creation followed by shared_ptr creation) into one, eliminates potential memory leak&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;faster code - by making one memory allocation requests to system&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
+
 </description>
 				<pubDate>Mon, 12 Sep 2016 02:04:56 -0400</pubDate>
-				<link>http://localhost:4000/2016/09/item-21-prefer-stdmake_unique-and-stdmake_shared-to-direct-use-of-new</link>
-				<guid isPermaLink="true">http://localhost:4000/2016/09/item-21-prefer-stdmake_unique-and-stdmake_shared-to-direct-use-of-new</guid>
+				<link>https://xiongm.github.io/2016/09/item-21-prefer-stdmake_unique-and-stdmake_shared-to-direct-use-of-new</link>
+				<guid isPermaLink="true">https://xiongm.github.io/2016/09/item-21-prefer-stdmake_unique-and-stdmake_shared-to-direct-use-of-new</guid>
 			</item>
 		
 			<item>
 				<title>Item 20: Use std::weak_ptr for std::shared_ptr like pointers that can dangle</title>
-				<description>&lt;p&gt;weak_ptr is a smart pointer that acts like shared_ptr, but doesn't contribute to ref counting. It can tell if a object it points to has been destroyed or not (by using expire()) weak_ptr CANNOT be dereferenced. You have to convert it to shared_ptr to be able to use it. Thus weak_ptr isn't a standalone smart pointer, it is a augmentation to shared_ptr.&lt;/p&gt;
-&lt;p&gt;The property that weak_ptr isn't a standalone smart pointer can be reflected by how it's constructed, usually weak_ptr is constructed from a shared_ptr.&lt;/p&gt;
-&lt;p&gt;[code language=&quot;cpp&quot;]&lt;/p&gt;
-&lt;p&gt;auto sp = make_shared&amp;lt;MyObject&amp;gt;();&lt;/p&gt;
-&lt;p&gt;weak_ptr&amp;lt;MyObject&amp;gt; wp(sp); // doesn't increment p's ref count&lt;br /&gt;
-...&lt;br /&gt;
-sp = nullptr; // sp is gone. remember copy assignment operator both increment and decrement&lt;/p&gt;
-&lt;p&gt;if (wp.expired()) // test if the underlying object dangles, in this case true&lt;br /&gt;
-{&lt;/p&gt;
-&lt;p&gt;}&lt;br /&gt;
-[/code]&lt;/p&gt;
-&lt;p&gt;To be able to check if an object dangles and if not, returns a shared_ptr, here's what you do&lt;/p&gt;
-&lt;p&gt;[code]&lt;br /&gt;
-auto sp = make_shared&amp;lt;MyObject&amp;gt;();&lt;/p&gt;
-&lt;p&gt;weak_ptr&amp;lt;MyObject&amp;gt; wp(sp);&lt;br /&gt;
-...&lt;/p&gt;
-&lt;p&gt;shared_ptr&amp;lt;MyObject&amp;gt; sp1 = wp.lock(); // returns a shared_ptr if not expired(), otherwise returns null&lt;/p&gt;
-&lt;p&gt;if (sp1)&lt;br /&gt;
-{&lt;br /&gt;
- ...&lt;br /&gt;
-}&lt;br /&gt;
-[/code]&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;h3&gt;Potential use cases for std::weak_ptr include factory method caching, observer lists, and the prevention of std::shared_ptr cycles,i.e. shared_ptr A points to shared_ptr B and B points to A as well.&lt;/h3&gt;
-&lt;/blockquote&gt;
+				<description>&lt;p&gt;weak_ptr is a smart pointer that acts like shared_ptr, but doesn’t contribute to ref counting. It can tell if a object it points to has been destroyed or not (by using expire()) weak_ptr CANNOT be dereferenced. You have to convert it to shared_ptr to be able to use it. Thus weak_ptr isn’t a standalone smart pointer, it is a augmentation to shared_ptr.&lt;/p&gt;
+
+&lt;p&gt;The property that weak_ptr isn’t a standalone smart pointer can be reflected by how it’s constructed, usually weak_ptr is constructed from a shared_ptr.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make_shared&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;weak_ptr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// doesn't increment p's ref count
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;nullptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// sp is gone. remember copy assignment operator both increment and decrement
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expired&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// test if the underlying object dangles, in this case true
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;To be able to check if an object dangles and if not, returns a shared_ptr, here’s what you do&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make_shared&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;weak_ptr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;shared_ptr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sp1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// returns a shared_ptr if not expired(), otherwise returns null
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sp1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Potential use cases for std::weak_ptr include factory method caching, observer lists, and the prevention of std::shared_ptr cycles,i.e. shared_ptr A points to shared_ptr B and B points to A as well.&lt;/p&gt;
+
 </description>
 				<pubDate>Mon, 12 Sep 2016 02:00:12 -0400</pubDate>
-				<link>http://localhost:4000/2016/09/item-20-use-stdweak_ptr-for-stdshared_ptr-like-pointers-that-can-dangle</link>
-				<guid isPermaLink="true">http://localhost:4000/2016/09/item-20-use-stdweak_ptr-for-stdshared_ptr-like-pointers-that-can-dangle</guid>
+				<link>https://xiongm.github.io/2016/09/item-20-use-stdweak_ptr-for-stdshared_ptr-like-pointers-that-can-dangle</link>
+				<guid isPermaLink="true">https://xiongm.github.io/2016/09/item-20-use-stdweak_ptr-for-stdshared_ptr-like-pointers-that-can-dangle</guid>
 			</item>
 		
 			<item>
 				<title>Item 19: Use std::shared_ptr for shared-ownership resource management.</title>
-				<description>&lt;p&gt;shared_ptr is C++'s way of garbage collector. All shared_ptr holders collectively own the underlying object and when the last holder exits, the object will be destroyed, automatically.&lt;/p&gt;
-&lt;p&gt;shared_ptr increment ref count in constructor, copy constructor, and copy assignment operator (copy assignment operator also decrement ref count of the object originally pointed to, so copy assignment operator does both). Note that move constructor &lt;em&gt;DOES NOT &lt;/em&gt;increment ref counts.&lt;/p&gt;
-&lt;p&gt;shared_ptr has performance implications because it needs to keep book information of the ref count, thus having twice the size of raw pointer. And to be thread safe, it needs to increment and decrement its ref count in atomic operation, which is usually slower than non atomic operation.&lt;/p&gt;
-&lt;p&gt;shared_ptr typically has two pointers, one pointing to the object, and another pointing to a control block dynamically allocated shared by all shared_ptrs. The control block should be set up  when first shared_ptr to an object is created. Per C++ 11, control block will be created when&lt;/p&gt;
+				<description>&lt;p&gt;shared_ptr is C++’s way of garbage collector. All shared_ptr holders collectively own the underlying object and when the last holder exits, the object will be destroyed, automatically.&lt;/p&gt;
+
+&lt;p&gt;shared_ptr increment ref count in constructor, copy constructor, and copy assignment operator (copy assignment operator also decrement ref count of the object originally pointed to, so copy assignment operator does both). Note that move constructor DOES NOT increment ref counts.&lt;/p&gt;
+
+&lt;p&gt;shared_ptr has performance implications because it needs to keep book information of the ref count, thus having twice the size of raw pointer. And to be thread safe, it needs to increment and decrement its ref count in atomic operation, which is usually slower than non atomic operation.&lt;/p&gt;
+
+&lt;p&gt;shared_ptr typically has two pointers, one pointing to the object, and another pointing to a control block dynamically allocated shared by all shared_ptrs. The control block should be set up  when first shared_ptr to an object is created. Per C++ 11, control block will be created when&lt;/p&gt;
+
 &lt;ul&gt;
-&lt;li&gt;make_shared is called&lt;/li&gt;
-&lt;li&gt;unique_ptr is converted to shared_ptr&lt;/li&gt;
-&lt;li&gt;when shared_ptr constructor is called with pointer&lt;/li&gt;
+  &lt;li&gt;make_shared is called&lt;/li&gt;
+  &lt;li&gt;unique_ptr is converted to shared_ptr&lt;/li&gt;
+  &lt;li&gt;when shared_ptr constructor is called with pointer&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;p&gt;The last approach is probably the most common way of creating a shared_ptr. In reality thou, it is possible that creating two shared_ptrs from the same raw pointer can result in two control blocks being created, thus causing duplicate ref counting, which is bad! See below&lt;/p&gt;
-&lt;p&gt;[code language=&quot;cpp&quot;]&lt;/p&gt;
-&lt;p&gt;auto p = new MyObject();&lt;br /&gt;
-shared_ptr&amp;lt;MyObject&amp;gt; a(p); //&lt;br /&gt;
-shared_ptr&amp;lt;MyObject&amp;gt; b(p);&lt;/p&gt;
-&lt;p&gt;[/code]&lt;/p&gt;
-&lt;p&gt;The lesson here is to either use make_shared, or use new directly inside shared_ptr constructor.&lt;/p&gt;
-&lt;p&gt;Another way to introduce this kind of duplicate-control-block issue has to do with using &lt;strong&gt;&lt;em&gt;this &lt;/em&gt;&lt;/strong&gt;pointer. Sometimes, we have to create shared_ptr out of &lt;em&gt;this&lt;/em&gt; pointer after the object has been created, so we can not use the methods mentioned above to avoid passing raw pointer directly to shared_ptr.&lt;/p&gt;
-&lt;p&gt;[code language=&quot;cpp&quot;]&lt;/p&gt;
-&lt;p&gt;vector&amp;lt;shared_ptr&amp;lt;MyObject&amp;gt;&amp;gt; objects;&lt;/p&gt;
-&lt;p&gt;// bad! what if there are other shared_ptrs already&lt;br /&gt;
-// pointing to the object? meaning that at least one control block&lt;br /&gt;
-// has been created, but passing raw pointer to shared_ptr constructor will surely&lt;br /&gt;
-// create a control block, resulting in duplicate control blocks&lt;br /&gt;
-objects.emplace_back(this);&lt;/p&gt;
-&lt;p&gt;[/code]&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MyObject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;shared_ptr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shared_ptr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The lesson here is to either use make_shared, or use new directly inside shared_ptr constructor.&lt;br /&gt;
+Another way to introduce this kind of duplicate-control-block issue has to do with using this pointer. Sometimes, we have to create shared_ptr out of this pointer after the object has been created, so we can not use the methods mentioned above to avoid passing raw pointer directly to shared_ptr.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shared_ptr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// bad! what if there are other shared_ptrs already
+// pointing to the object? meaning that at least one control block
+// has been created, but passing raw pointer to shared_ptr constructor will surely
+// create a control block, resulting in duplicate control blocks
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;emplace_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
 &lt;p&gt;This is exactly why we need to use enable_shared_from_this(), in case you have been using this for a while but never ask yourself why&lt;/p&gt;
-&lt;p&gt;[code language=&quot;cpp&quot;]&lt;br /&gt;
-class MyObjects : public std::enable_shared_from_this&amp;lt;MyObjects&amp;gt;&lt;br /&gt;
-{&lt;br /&gt;
-...&lt;br /&gt;
-};&lt;br /&gt;
-vector&amp;lt;shared_ptr&amp;lt;MyObject&amp;gt;&amp;gt; objects&lt;br /&gt;
-...&lt;br /&gt;
-objects.emplace_back(shared_from_this());&lt;/p&gt;
-&lt;p&gt;[/code]&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyObjects&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;enable_shared_from_this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyObjects&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shared_ptr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;emplace_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shared_from_this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
 </description>
 				<pubDate>Mon, 12 Sep 2016 01:12:28 -0400</pubDate>
-				<link>http://localhost:4000/2016/09/item-19-use-stdshared_ptr-for-shared-ownership-resource-management</link>
-				<guid isPermaLink="true">http://localhost:4000/2016/09/item-19-use-stdshared_ptr-for-shared-ownership-resource-management</guid>
+				<link>https://xiongm.github.io/2016/09/item-19-use-stdshared_ptr-for-shared-ownership-resource-management</link>
+				<guid isPermaLink="true">https://xiongm.github.io/2016/09/item-19-use-stdshared_ptr-for-shared-ownership-resource-management</guid>
 			</item>
 		
 			<item>
 				<title>Item 18: Use std::unique_ptr for exclusive-ownership resource management</title>
 				<description>&lt;p&gt;unique_ptr is a move-only type, because unique_ptr embodies a exclusive ownership semantics, meaning that you can not have two unique_ptr point to the same underlying object. As a result, unique_ptr cannot be copied, i.e. copy constructor/copy assignment constructor are not defined for unique_ptr.&lt;/p&gt;
+
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;unique_ptr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MyObject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;unique_ptr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// error! can not be copy constructed
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unique_ptr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;move&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;but&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;now&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;used&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;any&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;more&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;p&gt;unique_ptr by default is the same size as raw pointer, thus using unique_ptr incur no difference than using a raw pointer.&lt;/p&gt;
-&lt;p&gt;A good use of unique_ptr is simple factory function that initializes and returns unique_ptr. The caller will manage the lifecycle of the object.&lt;/p&gt;
-&lt;p&gt;[code language=&quot;cpp&quot;]&lt;br /&gt;
-class Piece {&lt;br /&gt;
- ...&lt;br /&gt;
-};&lt;br /&gt;
-class Knight : public Piece {&lt;br /&gt;
- ...&lt;br /&gt;
-};&lt;br /&gt;
-class Bishop: public Piece {&lt;br /&gt;
- ...&lt;br /&gt;
-};&lt;br /&gt;
-// variadic template, C++ 11's new feature to support arbitrary number&lt;br /&gt;
-// of template arguments with arbitrary type&lt;br /&gt;
-typename &amp;lt;typename... Arguments&amp;gt;&lt;br /&gt;
-unique_ptr&amp;lt;Piece&amp;gt;&lt;br /&gt;
-create_piece(const string &amp;amp; name, Arguments&amp;amp;&amp;amp;... args)&lt;br /&gt;
-{&lt;br /&gt;
-    unique_ptr&amp;lt;Piece&amp;gt; piece;&lt;br /&gt;
-    if (name == &amp;quot;Knight&amp;quot;)&lt;br /&gt;
-    {&lt;br /&gt;
-       piece.reset(new Knight(forward&amp;lt;Arguments&amp;gt;(args)...));&lt;br /&gt;
-    } else if (name == &amp;quot;Bishop&amp;quot;)&lt;br /&gt;
-    {&lt;br /&gt;
-       piece.reset(new Bishop(forward&amp;lt;Arguments&amp;gt;(args)...));&lt;br /&gt;
-    } else&lt;br /&gt;
-    {&lt;br /&gt;
-       throw std::runtime_error(&amp;quot;unknown type&amp;quot;);&lt;br /&gt;
-    }&lt;br /&gt;
-    return piece;&lt;br /&gt;
-}&lt;br /&gt;
-[/code]&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;h3&gt;It is easy to convert unique_ptr to shared_ptr, thus making unique_ptr ideal for factory function since you have two options(unique_ptr or shared_ptr)&lt;/h3&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Notes:&lt;/p&gt;
-&lt;p&gt;Q: Why auto_ptr can't be used with STL but unique_ptr can?&lt;/p&gt;
-&lt;p&gt;A: elements in STL container need to be copy constructible and copy assignable, but copying auto_ptr from a STL container will set it to null, thus invalidating this guarantee. unique_ptr implements move semantics, it will use move instead of copy.&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;span class=&quot;n&quot;&gt;unique_ptr&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MyObject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;unique_ptr&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// error! can not be copy constructed
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unique_ptr&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;move&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;but&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;now&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;used&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;any&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;more&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;unique_ptr by default is the same size as raw pointer, thus using unique_ptr incur no difference than using a raw pointer.&lt;br /&gt;
+A good use of unique_ptr is simple factory function that initializes and returns unique_ptr. The caller will manage the lifecycle of the object.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Piece&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Knight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Piece&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Bishop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Piece&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// variadic template, C++ 11's new feature to support arbitrary number
+// of template arguments with arbitrary type
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typename&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Arguments&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;unique_ptr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Piece&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;create_piece&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Arguments&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;unique_ptr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Piece&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;piece&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Knight&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;piece&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Knight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forward&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Arguments&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)...));&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Bishop&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;piece&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bishop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forward&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Arguments&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)...));&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;runtime_error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;unknown type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;piece&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;It is easy to convert unique_ptr to shared_ptr, thus making unique_ptr ideal for factory function since you have two options(unique_ptr or shared_ptr)&lt;/p&gt;
+
+&lt;p&gt;Notes:&lt;br /&gt;
+Q: Why auto_ptr can’t be used with STL but unique_ptr can?&lt;br /&gt;
+A: elements in STL container need to be copy constructible and copy assignable, but copying auto_ptr from a STL container will set it to null, thus invalidating this guarantee. unique_ptr implements move semantics, it will use move instead of copy.&lt;br /&gt;
+ &lt;/p&gt;
 </description>
 				<pubDate>Sun, 11 Sep 2016 22:12:48 -0400</pubDate>
-				<link>http://localhost:4000/2016/09/item-18-use-stdunique_ptr-for-exclusive-ownership-resource-management</link>
-				<guid isPermaLink="true">http://localhost:4000/2016/09/item-18-use-stdunique_ptr-for-exclusive-ownership-resource-management</guid>
+				<link>https://xiongm.github.io/2016/09/item-18-use-stdunique_ptr-for-exclusive-ownership-resource-management</link>
+				<guid isPermaLink="true">https://xiongm.github.io/2016/09/item-18-use-stdunique_ptr-for-exclusive-ownership-resource-management</guid>
 			</item>
 		
 			<item>
 				<title>Item 17: Understand special member function generation.</title>
-				<description>&lt;blockquote&gt;
-&lt;h3 class=&quot;p1&quot;&gt;The special member functions are those compilers may generate on their own:default constructor, destructor, copy operations  (C++98) and move operations (C++11). These functions are only generated when lacking of user-defined declaration but user code uses them.&lt;/h3&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;h3 class=&quot;p1&quot;&gt;Move operations are generated only for classes lacking explicitly declared. move operations, copy operations, and a destructor. Move ctor and move assignment ctor are also dependent. Declaring either one of them will disable generation of the other,i.e. you have to define your own if you want to use it.&lt;/h3&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;h3 class=&quot;p1&quot;&gt;The copy constructor is generated only for classes lacking an explicitly declared copy constructor, and it’s deleted if a move operation is declared.The copy assignment operator is generated only for classes lacking an explicitly declared copy assignment operator, and it’s deleted if a move operation is declared. Generation of the copy operations in classes with an explicitly declared destructor is still supported in C++11 but deprecated. Copy operations are independent, declaring either one but not the other will not prevent compiler from willing to generate the other.&lt;/h3&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;h3 class=&quot;p1&quot;&gt;Member function templates never suppress generation of special member functions.&lt;/h3&gt;
-&lt;/blockquote&gt;
+				<description>&lt;p&gt;The special member functions are those compilers may generate on their own:default constructor, destructor, copy operations  (C++98) and move operations (C++11). These functions are only generated when lacking of user-defined declaration but user code uses them.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;Move operations are generated only for classes lacking explicitly declared. move operations, copy operations, and a destructor. Move ctor and move assignment ctor are also dependent. Declaring either one of them will disable generation of the other,i.e. you have to define your own if you want to use it.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;The copy constructor is generated only for classes lacking an explicitly declared copy constructor, and it s deleted if a move operation is declared.The copy assignment operator is generated only for classes lacking an explicitly declared copy assignment operator, and it s deleted if a move operation is declared. Generation of the copy operations in classes with an explicitly declared destructor is still supported in C++11 but deprecated. Copy operations are independent, declaring either one but not the other will not prevent compiler from willing to generate the other.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;Member function templates never suppress generation of special member functions.&lt;/p&gt;
+
 </description>
 				<pubDate>Tue, 06 Sep 2016 01:46:53 -0400</pubDate>
-				<link>http://localhost:4000/2016/09/item-17-understand-special-member-function-generation</link>
-				<guid isPermaLink="true">http://localhost:4000/2016/09/item-17-understand-special-member-function-generation</guid>
+				<link>https://xiongm.github.io/2016/09/item-17-understand-special-member-function-generation</link>
+				<guid isPermaLink="true">https://xiongm.github.io/2016/09/item-17-understand-special-member-function-generation</guid>
 			</item>
 		
 			<item>
 				<title>Item 15: Use constexpr whenever possible.</title>
-				<description>&lt;blockquote&gt;
-&lt;h3 class=&quot;p1&quot;&gt;&lt;span class=&quot;s1&quot;&gt;constexpr &lt;/span&gt;objects are &lt;span class=&quot;s1&quot;&gt;const &lt;/span&gt;and are initialized with values known during compilation.&lt;/h3&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;[code language=&quot;cpp&quot;]&lt;br /&gt;
-int sz;&lt;br /&gt;
-constexpr int size = sz; // error, sz not known at compile time&lt;br /&gt;
-array&amp;lt;int, size&amp;gt; data; // error, size not known&lt;br /&gt;
-constexpr int size2 = 10; //fine, known at compile time&lt;br /&gt;
-array&amp;lt;int, size2&amp;gt; data2; // fine&lt;br /&gt;
-[/code]&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;h3 class=&quot;p1&quot;&gt;&lt;span class=&quot;s1&quot;&gt;constexpr &lt;/span&gt;functions can produce compile-time results when called with arguments whose values are known during compilation, but can also be used to produce run-time results when arguments are not known during compilation.&lt;/h3&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;[code language=&quot;cpp&quot;]&lt;br /&gt;
-constexpr int pow(int num, int exp) noexcept&lt;br /&gt;
-{&lt;br /&gt;
-return exp? num * pow(num, exp - 1) : 1;&lt;br /&gt;
-}&lt;/p&gt;
-&lt;p&gt;constexpr auto exp = 3;&lt;br /&gt;
-array&amp;lt;int, pow(3, exp)&amp;gt; results; // compile time pow&lt;/p&gt;
-&lt;p&gt;int pow = readPow();&lt;br /&gt;
-int exp = readExp();&lt;br /&gt;
-int result  = pow(pow, exp); // run time pow&lt;br /&gt;
-[/code]&lt;/p&gt;
+				<description>&lt;p&gt;constexpr objects are const and are initialized with values known during compilation.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;constexpr&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// error, sz not known at compile time
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// error, size not known
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;constexpr&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//fine, known at compile time
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fine&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;constexpr functions can produce compile-time results when called with arguments whose values are known during compilation, but can also be used to produce run-time results when arguments are not known during compilation.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;constexpr&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;noexcept&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;constexpr&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// compile time pow
+&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pow&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;readPow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;readExp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pow&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
 </description>
 				<pubDate>Sat, 03 Sep 2016 03:21:17 -0400</pubDate>
-				<link>http://localhost:4000/2016/09/item-15-use-constexpr-whenever-possible</link>
-				<guid isPermaLink="true">http://localhost:4000/2016/09/item-15-use-constexpr-whenever-possible</guid>
+				<link>https://xiongm.github.io/2016/09/item-15-use-constexpr-whenever-possible</link>
+				<guid isPermaLink="true">https://xiongm.github.io/2016/09/item-15-use-constexpr-whenever-possible</guid>
 			</item>
 		
 			<item>
-				<title>Item 14: Declare functions noexcept if they won’t emit exceptions</title>
-				<description>&lt;p&gt;C++98 exception specification is not very worthwhile. A change to the spec will easily break client codes. During work on C++11, it is decided that a true exception spec should only care about whether a function should throw or not, that's how noexcept came out.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;h3&gt;noexcept is part of function interface, by default it is false,i.e. the function may throw&lt;/h3&gt;
-&lt;/blockquote&gt;
-&lt;h3&gt;&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;h3&gt;compiler provides more optimization for noexcept function than non-noexcept function.&lt;/h3&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;[code language=&quot;cpp&quot;]&lt;br /&gt;
-void foo() throw();  // c++ 98 no throw style&lt;br /&gt;
-void bar() noexcept; // c++ 11 no throw style&lt;br /&gt;
-[/code]&lt;/p&gt;
-&lt;p&gt;In the above code, if foo (i.e. C++ 98 style no throw) violates exception specification and throws, the call stack is unwounded to foo's caller, and terminated. This is guaranteed by spec. But if bar violates exception specification, there's no such guarantee,i.e. runtime will terminate without unwinding call stack to foo's caller.  This difference allows c++ 11's compiler optimizer to avoid having to maintain the call stack in a unwindable state. In contrast, C++ 98's optimizer doesn't have have this optimization flexibility, resulting in more optimized codes in C++11's noexcept function&lt;/p&gt;
-&lt;p&gt;[code language=&quot;cpp&quot;]&lt;br /&gt;
-void foo() throw(); // less optimizable&lt;br /&gt;
-void foo(); // default is may throw, thus less optimizable&lt;br /&gt;
-void foo() noexcept; // most optimizable&lt;br /&gt;
-[/code]&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;h3&gt;noexcept is particularly valuable for some operations such as move and swap, since it is needed to guarantee exception safety for some operations that client depends on&lt;/h3&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;h3&gt;Most function are exception neutral, meaning that they won't emit exceptions themselves, but the function they invoke might. These functions are not noexcept&lt;/h3&gt;
-&lt;/blockquote&gt;
+				<title>Item 14: Declare functions noexcept if they won t emit exceptions</title>
+				<description>&lt;p&gt;C++98 exception specification is not very worthwhile. A change to the spec will easily break client codes. During work on C++11, it is decided that a true exception spec should only care about whether a function should throw or not, that’s how noexcept came out.&lt;/p&gt;
+
+&lt;p&gt;noexcept is part of function interface, by default it is false,i.e. the function may throw&lt;/p&gt;
+
+&lt;p&gt;compiler provides more optimization for noexcept function than non-noexcept function.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// c++ 98 no throw style
+&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;noexcept&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;no&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;style&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;In the above code, if foo (i.e. C++ 98 style no throw) violates exception specification and throws, the call stack is unwounded to foo’s caller, and terminated. This is guaranteed by spec. But if bar violates exception specification, there’s no such guarantee,i.e. runtime will terminate without unwinding call stack to foo’s caller.  This difference allows c++ 11’s compiler optimizer to avoid having to maintain the call stack in a unwindable state. In contrast, C++ 98’s optimizer doesn’t have have this optimization flexibility, resulting in more optimized codes in C++11’s noexcept function&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// less optimizable
+&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// default is may throw, thus less optimizable
+&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;noexcept&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;most&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;optimizable&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;noexcept is particularly valuable for some operations such as move and swap, since it is needed to guarantee exception safety for some operations that client depends on&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;Most function are exception neutral, meaning that they won’t emit exceptions themselves, but the function they invoke might. These functions are not noexcept&lt;/p&gt;
+
 </description>
 				<pubDate>Fri, 02 Sep 2016 20:41:23 -0400</pubDate>
-				<link>http://localhost:4000/2016/09/item-14-declare-functions-noexcept-if-they-wont-emit-exceptions</link>
-				<guid isPermaLink="true">http://localhost:4000/2016/09/item-14-declare-functions-noexcept-if-they-wont-emit-exceptions</guid>
+				<link>https://xiongm.github.io/2016/09/item-14-declare-functions-noexcept-if-they-wont-emit-exceptions</link>
+				<guid isPermaLink="true">https://xiongm.github.io/2016/09/item-14-declare-functions-noexcept-if-they-wont-emit-exceptions</guid>
 			</item>
 		
 			<item>
 				<title>item 12 override specifier and member function reference specifiers</title>
-				<description>&lt;blockquote&gt;
-&lt;h3 class=&quot;p1&quot;&gt;Declare overriding virtual functions &lt;span class=&quot;s1&quot;&gt;override, so if it doesn't override anything, compiler will let you know.&lt;/span&gt;&lt;/h3&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;h3&gt;member function reference specifiers can limit use of member function to lvalues or rvalues only. This can be useful when you want lvalue to return lvalue and rvalue to return rvalue.&lt;/h3&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Consider the following code&lt;/p&gt;
-&lt;p&gt;[code language=&quot;cpp&quot;]&lt;br /&gt;
-class Widget&lt;br /&gt;
-{&lt;br /&gt;
-public:&lt;br /&gt;
-using DataType = std::vector&amp;lt;int&amp;gt;;&lt;br /&gt;
-DataType &amp;amp; data()&lt;br /&gt;
-{&lt;br /&gt;
-  return data_;&lt;br /&gt;
-}&lt;br /&gt;
-private:&lt;br /&gt;
-DataType data_;&lt;br /&gt;
-}&lt;/p&gt;
-&lt;p&gt;....&lt;/p&gt;
-&lt;p&gt;Widget w;&lt;/p&gt;
-&lt;p&gt;auto data = w.data(); // copy constructed, b/c w.data() is lvalue&lt;/p&gt;
-&lt;p&gt;....&lt;br /&gt;
-Widget create_widget();&lt;/p&gt;
-&lt;p&gt;auto data = create_widget().data(); // copy constructed as well, but doesn't have to be&lt;br /&gt;
-[/code]&lt;/p&gt;
-&lt;p&gt;Now by introducing reference specifiers for data(), we can improve this.&lt;/p&gt;
-&lt;p&gt;[code language=&quot;cpp&quot;]&lt;br /&gt;
-class Widget&lt;br /&gt;
-{&lt;br /&gt;
-public:&lt;br /&gt;
-using DataType = std::vector&amp;lt;int&amp;gt;;&lt;br /&gt;
-DataType data() &amp;amp;; // used only when (*this) is lvalue&lt;br /&gt;
-{&lt;br /&gt;
- return data_;&lt;br /&gt;
-}&lt;/p&gt;
-&lt;p&gt;DataType data() &amp;amp;&amp;amp;; // used only when (*this) is rvalue&lt;br /&gt;
-{&lt;br /&gt;
-  return std::move(data_); // because (*this) is a temp object!&lt;br /&gt;
-}&lt;br /&gt;
-private:&lt;br /&gt;
-DataType data_;&lt;br /&gt;
-}&lt;br /&gt;
-...&lt;/p&gt;
-&lt;p&gt;Widget w;&lt;br /&gt;
-auto data = w.data(); // calls data() &amp;amp; copy constructed&lt;br /&gt;
-...&lt;br /&gt;
-Widget create_widget();&lt;br /&gt;
-auto data = create_widget().data(); // calls data() &amp;amp;&amp;amp; creates a rvalue, so move constructed&lt;br /&gt;
-[/code]&lt;/p&gt;
+				<description>&lt;p&gt;Declare overriding virtual functions override, so if it doesn’t override anything, compiler will let you know.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;member function reference specifiers can limit use of member function to lvalues or rvalues only. This can be useful when you want lvalue to return lvalue and rvalue to return rvalue.&lt;/p&gt;
+
+&lt;p&gt;Consider the following code&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Widget&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DataType&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;DataType&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;DataType&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;....&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Widget&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// copy constructed, b/c w.data() is lvalue
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;....&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Widget&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create_widget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create_widget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;constructed&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;well&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;but&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;doesn&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;have&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Now by introducing reference specifiers for data(), we can improve this.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Widget&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DataType&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;DataType&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// used only when (*this) is lvalue
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;DataType&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// used only when (*this) is rvalue
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;move&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// because (*this) is a temp object!
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;DataType&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Widget&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// calls data() &amp;amp; copy constructed
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Widget&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create_widget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create_widget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;calls&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;creates&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rvalue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;so&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;move&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;constructed&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
 </description>
 				<pubDate>Fri, 02 Sep 2016 02:22:17 -0400</pubDate>
-				<link>http://localhost:4000/2016/09/item-12-override-specifier-and-member-function-reference-specifiers</link>
-				<guid isPermaLink="true">http://localhost:4000/2016/09/item-12-override-specifier-and-member-function-reference-specifiers</guid>
+				<link>https://xiongm.github.io/2016/09/item-12-override-specifier-and-member-function-reference-specifiers</link>
+				<guid isPermaLink="true">https://xiongm.github.io/2016/09/item-12-override-specifier-and-member-function-reference-specifiers</guid>
 			</item>
 		
 			<item>
 				<title>item 11 Prefer deleted functions to private undefined ones</title>
-				<description>&lt;blockquote&gt;
-&lt;h3&gt;&lt;em&gt;delete &lt;/em&gt;key word specify functions that are not defined, thus not meant to be used by clients.&lt;/h3&gt;
-&lt;/blockquote&gt;
+				<description>&lt;p&gt;delete key word specify functions that are not defined, thus not meant to be used by clients.&lt;/p&gt;
+
 &lt;p&gt;C++ 98&lt;/p&gt;
-&lt;p&gt;[code language=&quot;cpp&quot;]&lt;/p&gt;
-&lt;p&gt;template &amp;lt;class charT, class traits = char_traits&amp;lt;charT&amp;gt;&amp;gt;&lt;br /&gt;
-class basic_ios : public ios_base {&lt;br /&gt;
-public:&lt;br /&gt;
-…&lt;br /&gt;
-private:&lt;br /&gt;
-  basic_ios(const basic_ios &amp;amp;); // not defined&lt;br /&gt;
-  basic_ios &amp;amp; operator=(const basic_ios &amp;amp;); // not defined&lt;br /&gt;
-};&lt;br /&gt;
-};&lt;/p&gt;
-&lt;p&gt;[/code]&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;charT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;traits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;char_traits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;charT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;basic_ios&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ios_base&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+ 
+&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;basic_ios&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;basic_ios&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// not defined
+&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;basic_ios&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;operator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;basic_ios&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// not defined
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
 &lt;p&gt;C++ 11&lt;/p&gt;
-&lt;p&gt;[code language=&quot;cpp&quot;]&lt;br /&gt;
-template &amp;lt;class charT, class traits = char_traits&amp;lt;charT&amp;gt;&amp;gt;&lt;br /&gt;
-class basic_ios : public ios_base {&lt;br /&gt;
-public:&lt;br /&gt;
-…&lt;br /&gt;
-  basic_ios(const basic_ios &amp;amp;) = delete;&lt;br /&gt;
-  basic_ios &amp;amp; operator=(const basic_ios &amp;amp;) = delete;&lt;br /&gt;
-…&lt;br /&gt;
-};&lt;br /&gt;
-[/code]&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;h3&gt;delete can be used with any function, not just member function, to eliminate the possibilities of usage by client&lt;/h3&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;charT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;traits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;char_traits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;charT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;basic_ios&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ios_base&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+ 
+  &lt;span class=&quot;n&quot;&gt;basic_ios&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;basic_ios&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;basic_ios&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;operator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;basic_ios&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+ 
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;delete can be used with any function, not just member function, to eliminate the possibilities of usage by client&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
 </description>
 				<pubDate>Thu, 01 Sep 2016 20:10:31 -0400</pubDate>
-				<link>http://localhost:4000/2016/09/prefer-deleted-functions-to-private-undefined-ones</link>
-				<guid isPermaLink="true">http://localhost:4000/2016/09/prefer-deleted-functions-to-private-undefined-ones</guid>
+				<link>https://xiongm.github.io/2016/09/prefer-deleted-functions-to-private-undefined-ones</link>
+				<guid isPermaLink="true">https://xiongm.github.io/2016/09/prefer-deleted-functions-to-private-undefined-ones</guid>
 			</item>
 		
 	</channel>

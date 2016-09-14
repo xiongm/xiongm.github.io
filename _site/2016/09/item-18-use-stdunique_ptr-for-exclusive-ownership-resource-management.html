@@ -5,14 +5,14 @@
   <title>Cowboybebop's Notes</title>
   <meta name="theme-color" content="#222222" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="http://localhost:4000/js/jquery.min.js"></script>
-  <script src="http://localhost:4000/js/bootstrap.min.js"></script>
-  <script src="http://localhost:4000/js/header.js"></script>
-  <script src="http://localhost:4000/js/toc.js"></script>
-  <link href="http://localhost:4000/css/bootstrap.min.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/theme.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/syntax.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://xiongm.github.io/js/jquery.min.js"></script>
+  <script src="https://xiongm.github.io/js/bootstrap.min.js"></script>
+  <script src="https://xiongm.github.io/js/header.js"></script>
+  <script src="https://xiongm.github.io/js/toc.js"></script>
+  <link href="https://xiongm.github.io/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/theme.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/syntax.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -47,14 +47,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="http://localhost:4000/">Cowboybebop's Notes</a>
+        <a class="navbar-brand" href="https://xiongm.github.io/">Cowboybebop's Notes</a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><a href="http://localhost:4000/">/home</a></li>
-          <li><a href="http://localhost:4000/archive.html">/archive</a></li>
-          <li><a href="http://localhost:4000/tags.html">/tags</a></li>
-          <li><a href="http://localhost:4000/about.html">/about</a></li>
+          <li><a href="https://xiongm.github.io/">/home</a></li>
+          <li><a href="https://xiongm.github.io/archive.html">/archive</a></li>
+          <li><a href="https://xiongm.github.io/tags.html">/tags</a></li>
+          <li><a href="https://xiongm.github.io/about.html">/about</a></li>
         </ul>
       </div>
     </div>
@@ -68,7 +68,7 @@
         <div class="col-md-8">
           <div class="article">
             <div class="well">
-              <h1><a href="http://localhost:4000/2016/09/item-18-use-stdunique_ptr-for-exclusive-ownership-resource-management">Item 18: Use std::unique_ptr for exclusive-ownership resource management</a></h1>
+              <h1><a href="https://xiongm.github.io/2016/09/item-18-use-stdunique_ptr-for-exclusive-ownership-resource-management">Item 18: Use std::unique_ptr for exclusive-ownership resource management</a></h1>
               <div class="post-meta">
                 <div class="post-time">
                   <i class="fa fa-calendar"></i>
@@ -76,56 +76,57 @@
                 </div>
                 <ul>
                   
-                    <li><a href="http://localhost:4000/tag/modernc++">modernc++</a></li>
+                    <li><a href="https://xiongm.github.io/tag/modernc++">modernc++</a></li>
                   
                 </ul>
               </div>
               <div class="post-content">
                 <div id="toc" class="toc"></div>
                 <p>unique_ptr is a move-only type, because unique_ptr embodies a exclusive ownership semantics, meaning that you can not have two unique_ptr point to the same underlying object. As a result, unique_ptr cannot be copied, i.e. copy constructor/copy assignment constructor are not defined for unique_ptr.</p>
+
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-<span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">MyObject</span><span class="o">&gt;</span> <span class="n">a</span><span class="p">(</span><span class="k">new</span> <span class="n">MyObject</span><span class="p">());</span>
-<span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">MyObject</span><span class="o">&gt;</span> <span class="n">b</span><span class="p">(</span><span class="n">a</span><span class="p">);</span> <span class="c1">// error! can not be copy constructed
-</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">MyObject</span><span class="o">&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">move</span><span class="p">(</span><span class="n">a</span><span class="p">);</span> <span class="o">//</span> <span class="n">OK</span><span class="p">,</span> <span class="n">but</span> <span class="n">now</span> <span class="n">a</span> <span class="n">can</span> <span class="n">not</span> <span class="n">be</span> <span class="n">used</span> <span class="n">any</span> <span class="n">more</span></code></pre></figure>
-<p>unique_ptr by default is the same size as raw pointer, thus using unique_ptr incur no difference than using a raw pointer.</p>
-<p>A good use of unique_ptr is simple factory function that initializes and returns unique_ptr. The caller will manage the lifecycle of the object.</p>
-<p>[code language="cpp"]<br />
-class Piece {<br />
- ...<br />
-};<br />
-class Knight : public Piece {<br />
- ...<br />
-};<br />
-class Bishop: public Piece {<br />
- ...<br />
-};<br />
-// variadic template, C++ 11's new feature to support arbitrary number<br />
-// of template arguments with arbitrary type<br />
-typename &lt;typename... Arguments&gt;<br />
-unique_ptr&lt;Piece&gt;<br />
-create_piece(const string &amp; name, Arguments&amp;&amp;... args)<br />
-{<br />
-    unique_ptr&lt;Piece&gt; piece;<br />
-    if (name == &quot;Knight&quot;)<br />
-    {<br />
-       piece.reset(new Knight(forward&lt;Arguments&gt;(args)...));<br />
-    } else if (name == &quot;Bishop&quot;)<br />
-    {<br />
-       piece.reset(new Bishop(forward&lt;Arguments&gt;(args)...));<br />
-    } else<br />
-    {<br />
-       throw std::runtime_error(&quot;unknown type&quot;);<br />
-    }<br />
-    return piece;<br />
-}<br />
-[/code]</p>
-<blockquote>
-<h3>It is easy to convert unique_ptr to shared_ptr, thus making unique_ptr ideal for factory function since you have two options(unique_ptr or shared_ptr)</h3>
-</blockquote>
-<p>Notes:</p>
-<p>Q: Why auto_ptr can't be used with STL but unique_ptr can?</p>
-<p>A: elements in STL container need to be copy constructible and copy assignable, but copying auto_ptr from a STL container will set it to null, thus invalidating this guarantee. unique_ptr implements move semantics, it will use move instead of copy.</p>
-<p>&nbsp;</p>
+<span class="n">unique_ptr</span> <span class="n">a</span><span class="p">(</span><span class="k">new</span> <span class="n">MyObject</span><span class="p">());</span>
+<span class="n">unique_ptr</span> <span class="n">b</span><span class="p">(</span><span class="n">a</span><span class="p">);</span> <span class="c1">// error! can not be copy constructed
+</span><span class="n">unique_ptr</span> <span class="n">c</span> <span class="o">=</span> <span class="n">move</span><span class="p">(</span><span class="n">a</span><span class="p">);</span> <span class="o">//</span> <span class="n">OK</span><span class="p">,</span> <span class="n">but</span> <span class="n">now</span> <span class="n">a</span> <span class="n">can</span> <span class="n">not</span> <span class="n">be</span> <span class="n">used</span> <span class="n">any</span> <span class="n">more</span></code></pre></figure>
+
+<p>unique_ptr by default is the same size as raw pointer, thus using unique_ptr incur no difference than using a raw pointer.<br />
+A good use of unique_ptr is simple factory function that initializes and returns unique_ptr. The caller will manage the lifecycle of the object.</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Piece</span> <span class="p">{</span>
+ <span class="p">...</span>
+<span class="p">};</span>
+<span class="k">class</span> <span class="nc">Knight</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Piece</span> <span class="p">{</span>
+ <span class="p">...</span>
+<span class="p">};</span>
+<span class="k">class</span> <span class="nc">Bishop</span><span class="o">:</span> <span class="k">public</span> <span class="n">Piece</span> <span class="p">{</span>
+ <span class="p">...</span>
+<span class="p">};</span>
+<span class="c1">// variadic template, C++ 11's new feature to support arbitrary number
+// of template arguments with arbitrary type
+</span><span class="k">typename</span> <span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">Arguments</span><span class="o">&gt;</span>
+<span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Piece</span><span class="o">&gt;</span>
+<span class="n">create_piece</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="n">Arguments</span><span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Piece</span><span class="o">&gt;</span> <span class="n">piece</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s">"Knight"</span><span class="p">)</span>
+    <span class="p">{</span>
+       <span class="n">piece</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="k">new</span> <span class="n">Knight</span><span class="p">(</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Arguments</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...));</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s">"Bishop"</span><span class="p">)</span>
+    <span class="p">{</span>
+       <span class="n">piece</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="k">new</span> <span class="n">Bishop</span><span class="p">(</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Arguments</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...));</span>
+    <span class="p">}</span> <span class="k">else</span>
+    <span class="p">{</span>
+       <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="s">"unknown type"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">piece</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>It is easy to convert unique_ptr to shared_ptr, thus making unique_ptr ideal for factory function since you have two options(unique_ptr or shared_ptr)</p>
+
+<p>Notes:<br />
+Q: Why auto_ptr can’t be used with STL but unique_ptr can?<br />
+A: elements in STL container need to be copy constructible and copy assignable, but copying auto_ptr from a STL container will set it to null, thus invalidating this guarantee. unique_ptr implements move semantics, it will use move instead of copy.<br />
+ </p>
 
                 
 

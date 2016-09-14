@@ -5,14 +5,14 @@
   <title>Cowboybebop's Notes</title>
   <meta name="theme-color" content="#222222" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="http://localhost:4000/js/jquery.min.js"></script>
-  <script src="http://localhost:4000/js/bootstrap.min.js"></script>
-  <script src="http://localhost:4000/js/header.js"></script>
-  <script src="http://localhost:4000/js/toc.js"></script>
-  <link href="http://localhost:4000/css/bootstrap.min.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/theme.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/syntax.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://xiongm.github.io/js/jquery.min.js"></script>
+  <script src="https://xiongm.github.io/js/bootstrap.min.js"></script>
+  <script src="https://xiongm.github.io/js/header.js"></script>
+  <script src="https://xiongm.github.io/js/toc.js"></script>
+  <link href="https://xiongm.github.io/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/theme.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/syntax.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -47,14 +47,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="http://localhost:4000/">Cowboybebop's Notes</a>
+        <a class="navbar-brand" href="https://xiongm.github.io/">Cowboybebop's Notes</a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><a href="http://localhost:4000/">/home</a></li>
-          <li><a href="http://localhost:4000/archive.html">/archive</a></li>
-          <li><a href="http://localhost:4000/tags.html">/tags</a></li>
-          <li><a href="http://localhost:4000/about.html">/about</a></li>
+          <li><a href="https://xiongm.github.io/">/home</a></li>
+          <li><a href="https://xiongm.github.io/archive.html">/archive</a></li>
+          <li><a href="https://xiongm.github.io/tags.html">/tags</a></li>
+          <li><a href="https://xiongm.github.io/about.html">/about</a></li>
         </ul>
       </div>
     </div>
@@ -68,7 +68,7 @@
         <div class="col-md-8">
           <div class="article">
             <div class="well">
-              <h1><a href="http://localhost:4000/2016/09/item-19-use-stdshared_ptr-for-shared-ownership-resource-management">Item 19: Use std::shared_ptr for shared-ownership resource management.</a></h1>
+              <h1><a href="https://xiongm.github.io/2016/09/item-19-use-stdshared_ptr-for-shared-ownership-resource-management">Item 19: Use std::shared_ptr for shared-ownership resource management.</a></h1>
               <div class="post-meta">
                 <div class="post-time">
                   <i class="fa fa-calendar"></i>
@@ -76,47 +76,52 @@
                 </div>
                 <ul>
                   
-                    <li><a href="http://localhost:4000/tag/modernc++">modernc++</a></li>
+                    <li><a href="https://xiongm.github.io/tag/modernc++">modernc++</a></li>
                   
                 </ul>
               </div>
               <div class="post-content">
                 <div id="toc" class="toc"></div>
-                <p>shared_ptr is C++'s way of garbage collector. All shared_ptr holders collectively own the underlying object and when the last holder exits, the object will be destroyed, automatically.</p>
-<p>shared_ptr increment ref count in constructor, copy constructor, and copy assignment operator (copy assignment operator also decrement ref count of the object originally pointed to, so copy assignment operator does both). Note that move constructor <em>DOES NOT </em>increment ref counts.</p>
-<p>shared_ptr has performance implications because it needs to keep book information of the ref count, thus having twice the size of raw pointer. And to be thread safe, it needs to increment and decrement its ref count in atomic operation, which is usually slower than non atomic operation.</p>
-<p>shared_ptr typically has two pointers, one pointing to the object, and another pointing to a control block dynamically allocated shared by all shared_ptrs. The control block should be set up  when first shared_ptr to an object is created. Per C++ 11, control block will be created when</p>
+                <p>shared_ptr is C++’s way of garbage collector. All shared_ptr holders collectively own the underlying object and when the last holder exits, the object will be destroyed, automatically.</p>
+
+<p>shared_ptr increment ref count in constructor, copy constructor, and copy assignment operator (copy assignment operator also decrement ref count of the object originally pointed to, so copy assignment operator does both). Note that move constructor DOES NOT increment ref counts.</p>
+
+<p>shared_ptr has performance implications because it needs to keep book information of the ref count, thus having twice the size of raw pointer. And to be thread safe, it needs to increment and decrement its ref count in atomic operation, which is usually slower than non atomic operation.</p>
+
+<p>shared_ptr typically has two pointers, one pointing to the object, and another pointing to a control block dynamically allocated shared by all shared_ptrs. The control block should be set up  when first shared_ptr to an object is created. Per C++ 11, control block will be created when</p>
+
 <ul>
-<li>make_shared is called</li>
-<li>unique_ptr is converted to shared_ptr</li>
-<li>when shared_ptr constructor is called with pointer</li>
+  <li>make_shared is called</li>
+  <li>unique_ptr is converted to shared_ptr</li>
+  <li>when shared_ptr constructor is called with pointer</li>
 </ul>
+
 <p>The last approach is probably the most common way of creating a shared_ptr. In reality thou, it is possible that creating two shared_ptrs from the same raw pointer can result in two control blocks being created, thus causing duplicate ref counting, which is bad! See below</p>
-<p>[code language="cpp"]</p>
-<p>auto p = new MyObject();<br />
-shared_ptr&lt;MyObject&gt; a(p); //<br />
-shared_ptr&lt;MyObject&gt; b(p);</p>
-<p>[/code]</p>
-<p>The lesson here is to either use make_shared, or use new directly inside shared_ptr constructor.</p>
-<p>Another way to introduce this kind of duplicate-control-block issue has to do with using <strong><em>this </em></strong>pointer. Sometimes, we have to create shared_ptr out of <em>this</em> pointer after the object has been created, so we can not use the methods mentioned above to avoid passing raw pointer directly to shared_ptr.</p>
-<p>[code language="cpp"]</p>
-<p>vector&lt;shared_ptr&lt;MyObject&gt;&gt; objects;</p>
-<p>// bad! what if there are other shared_ptrs already<br />
-// pointing to the object? meaning that at least one control block<br />
-// has been created, but passing raw pointer to shared_ptr constructor will surely<br />
-// create a control block, resulting in duplicate control blocks<br />
-objects.emplace_back(this);</p>
-<p>[/code]</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">auto</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyObject</span><span class="p">();</span>
+<span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">MyObject</span><span class="o">&gt;</span> <span class="n">a</span><span class="p">(</span><span class="n">p</span><span class="p">);</span> <span class="c1">//
+</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">MyObject</span><span class="o">&gt;</span> <span class="n">b</span><span class="p">(</span><span class="n">p</span><span class="p">);</span></code></pre></figure>
+
+<p>The lesson here is to either use make_shared, or use new directly inside shared_ptr constructor.<br />
+Another way to introduce this kind of duplicate-control-block issue has to do with using this pointer. Sometimes, we have to create shared_ptr out of this pointer after the object has been created, so we can not use the methods mentioned above to avoid passing raw pointer directly to shared_ptr.</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">vector</span><span class="o">&lt;</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">MyObject</span><span class="o">&gt;&gt;</span> <span class="n">objects</span><span class="p">;</span>
+<span class="c1">// bad! what if there are other shared_ptrs already
+// pointing to the object? meaning that at least one control block
+// has been created, but passing raw pointer to shared_ptr constructor will surely
+// create a control block, resulting in duplicate control blocks
+</span><span class="n">objects</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="k">this</span><span class="p">);</span></code></pre></figure>
+
 <p>This is exactly why we need to use enable_shared_from_this(), in case you have been using this for a while but never ask yourself why</p>
-<p>[code language="cpp"]<br />
-class MyObjects : public std::enable_shared_from_this&lt;MyObjects&gt;<br />
-{<br />
-...<br />
-};<br />
-vector&lt;shared_ptr&lt;MyObject&gt;&gt; objects<br />
-...<br />
-objects.emplace_back(shared_from_this());</p>
-<p>[/code]</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">MyObjects</span> <span class="o">:</span> <span class="k">public</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_shared_from_this</span><span class="o">&lt;</span><span class="n">MyObjects</span><span class="o">&gt;</span>
+<span class="p">{</span>
+<span class="p">...</span>
+<span class="p">};</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">MyObject</span><span class="o">&gt;&gt;</span> <span class="n">objects</span>
+<span class="p">...</span>
+<span class="n">objects</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">shared_from_this</span><span class="p">());</span></code></pre></figure>
+
 
                 
 

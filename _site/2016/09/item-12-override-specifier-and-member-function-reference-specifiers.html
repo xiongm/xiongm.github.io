@@ -5,14 +5,14 @@
   <title>Cowboybebop's Notes</title>
   <meta name="theme-color" content="#222222" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="http://localhost:4000/js/jquery.min.js"></script>
-  <script src="http://localhost:4000/js/bootstrap.min.js"></script>
-  <script src="http://localhost:4000/js/header.js"></script>
-  <script src="http://localhost:4000/js/toc.js"></script>
-  <link href="http://localhost:4000/css/bootstrap.min.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/theme.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/syntax.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://xiongm.github.io/js/jquery.min.js"></script>
+  <script src="https://xiongm.github.io/js/bootstrap.min.js"></script>
+  <script src="https://xiongm.github.io/js/header.js"></script>
+  <script src="https://xiongm.github.io/js/toc.js"></script>
+  <link href="https://xiongm.github.io/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/theme.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/syntax.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -47,14 +47,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="http://localhost:4000/">Cowboybebop's Notes</a>
+        <a class="navbar-brand" href="https://xiongm.github.io/">Cowboybebop's Notes</a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><a href="http://localhost:4000/">/home</a></li>
-          <li><a href="http://localhost:4000/archive.html">/archive</a></li>
-          <li><a href="http://localhost:4000/tags.html">/tags</a></li>
-          <li><a href="http://localhost:4000/about.html">/about</a></li>
+          <li><a href="https://xiongm.github.io/">/home</a></li>
+          <li><a href="https://xiongm.github.io/archive.html">/archive</a></li>
+          <li><a href="https://xiongm.github.io/tags.html">/tags</a></li>
+          <li><a href="https://xiongm.github.io/about.html">/about</a></li>
         </ul>
       </div>
     </div>
@@ -68,7 +68,7 @@
         <div class="col-md-8">
           <div class="article">
             <div class="well">
-              <h1><a href="http://localhost:4000/2016/09/item-12-override-specifier-and-member-function-reference-specifiers">item 12 override specifier and member function reference specifiers</a></h1>
+              <h1><a href="https://xiongm.github.io/2016/09/item-12-override-specifier-and-member-function-reference-specifiers">item 12 override specifier and member function reference specifiers</a></h1>
               <div class="post-meta">
                 <div class="post-time">
                   <i class="fa fa-calendar"></i>
@@ -76,63 +76,62 @@
                 </div>
                 <ul>
                   
-                    <li><a href="http://localhost:4000/tag/modernc++">modernc++</a></li>
+                    <li><a href="https://xiongm.github.io/tag/modernc++">modernc++</a></li>
                   
                 </ul>
               </div>
               <div class="post-content">
                 <div id="toc" class="toc"></div>
-                <blockquote>
-<h3 class="p1">Declare overriding virtual functions <span class="s1">override, so if it doesn't override anything, compiler will let you know.</span></h3>
-</blockquote>
-<p>&nbsp;</p>
-<blockquote>
-<h3>member function reference specifiers can limit use of member function to lvalues or rvalues only. This can be useful when you want lvalue to return lvalue and rvalue to return rvalue.</h3>
-</blockquote>
-<p>Consider the following code</p>
-<p>[code language="cpp"]<br />
-class Widget<br />
-{<br />
-public:<br />
-using DataType = std::vector&lt;int&gt;;<br />
-DataType &amp; data()<br />
-{<br />
-  return data_;<br />
-}<br />
-private:<br />
-DataType data_;<br />
-}</p>
-<p>....</p>
-<p>Widget w;</p>
-<p>auto data = w.data(); // copy constructed, b/c w.data() is lvalue</p>
-<p>....<br />
-Widget create_widget();</p>
-<p>auto data = create_widget().data(); // copy constructed as well, but doesn't have to be<br />
-[/code]</p>
-<p>Now by introducing reference specifiers for data(), we can improve this.</p>
-<p>[code language="cpp"]<br />
-class Widget<br />
-{<br />
-public:<br />
-using DataType = std::vector&lt;int&gt;;<br />
-DataType data() &amp;; // used only when (*this) is lvalue<br />
-{<br />
- return data_;<br />
-}</p>
-<p>DataType data() &amp;&amp;; // used only when (*this) is rvalue<br />
-{<br />
-  return std::move(data_); // because (*this) is a temp object!<br />
-}<br />
-private:<br />
-DataType data_;<br />
-}<br />
-...</p>
-<p>Widget w;<br />
-auto data = w.data(); // calls data() &amp; copy constructed<br />
-...<br />
-Widget create_widget();<br />
-auto data = create_widget().data(); // calls data() &amp;&amp; creates a rvalue, so move constructed<br />
-[/code]</p>
+                <p>Declare overriding virtual functions override, so if it doesn’t override anything, compiler will let you know.</p>
+
+<p> </p>
+
+<p>member function reference specifiers can limit use of member function to lvalues or rvalues only. This can be useful when you want lvalue to return lvalue and rvalue to return rvalue.</p>
+
+<p>Consider the following code</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Widget</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="k">using</span> <span class="n">DataType</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">DataType</span> <span class="o">&amp;</span> <span class="n">data</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">data_</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="n">DataType</span> <span class="n">data_</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">....</span>
+<span class="n">Widget</span> <span class="n">w</span><span class="p">;</span>
+<span class="k">auto</span> <span class="n">data</span> <span class="o">=</span> <span class="n">w</span><span class="p">.</span><span class="n">data</span><span class="p">();</span> <span class="c1">// copy constructed, b/c w.data() is lvalue
+</span><span class="p">....</span>
+<span class="n">Widget</span> <span class="n">create_widget</span><span class="p">();</span>
+<span class="k">auto</span> <span class="n">data</span> <span class="o">=</span> <span class="n">create_widget</span><span class="p">().</span><span class="n">data</span><span class="p">();</span> <span class="o">//</span> <span class="n">copy</span> <span class="n">constructed</span> <span class="n">as</span> <span class="n">well</span><span class="p">,</span> <span class="n">but</span> <span class="n">doesn</span><span class="err">'</span><span class="n">t</span> <span class="n">have</span> <span class="n">to</span> <span class="n">be</span></code></pre></figure>
+
+<p>Now by introducing reference specifiers for data(), we can improve this.</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Widget</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="k">using</span> <span class="n">DataType</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">DataType</span> <span class="n">data</span><span class="p">()</span> <span class="o">&amp;</span><span class="p">;</span> <span class="c1">// used only when (*this) is lvalue
+</span><span class="p">{</span>
+ <span class="k">return</span> <span class="n">data_</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">DataType</span> <span class="n">data</span><span class="p">()</span> <span class="o">&amp;&amp;</span><span class="p">;</span> <span class="c1">// used only when (*this) is rvalue
+</span><span class="p">{</span>
+  <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">data_</span><span class="p">);</span> <span class="c1">// because (*this) is a temp object!
+</span><span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="n">DataType</span> <span class="n">data_</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">...</span>
+<span class="n">Widget</span> <span class="n">w</span><span class="p">;</span>
+<span class="k">auto</span> <span class="n">data</span> <span class="o">=</span> <span class="n">w</span><span class="p">.</span><span class="n">data</span><span class="p">();</span> <span class="c1">// calls data() &amp; copy constructed
+</span><span class="p">...</span>
+<span class="n">Widget</span> <span class="n">create_widget</span><span class="p">();</span>
+<span class="k">auto</span> <span class="n">data</span> <span class="o">=</span> <span class="n">create_widget</span><span class="p">().</span><span class="n">data</span><span class="p">();</span> <span class="o">//</span> <span class="n">calls</span> <span class="n">data</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">creates</span> <span class="n">a</span> <span class="n">rvalue</span><span class="p">,</span> <span class="n">so</span> <span class="n">move</span> <span class="n">constructed</span></code></pre></figure>
+
 
                 
 

@@ -5,14 +5,14 @@
   <title>Cowboybebop's Notes</title>
   <meta name="theme-color" content="#222222" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="http://localhost:4000/js/jquery.min.js"></script>
-  <script src="http://localhost:4000/js/bootstrap.min.js"></script>
-  <script src="http://localhost:4000/js/header.js"></script>
-  <script src="http://localhost:4000/js/toc.js"></script>
-  <link href="http://localhost:4000/css/bootstrap.min.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/theme.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/syntax.css" rel="stylesheet">
-  <link href="http://localhost:4000/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://xiongm.github.io/js/jquery.min.js"></script>
+  <script src="https://xiongm.github.io/js/bootstrap.min.js"></script>
+  <script src="https://xiongm.github.io/js/header.js"></script>
+  <script src="https://xiongm.github.io/js/toc.js"></script>
+  <link href="https://xiongm.github.io/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/theme.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/syntax.css" rel="stylesheet">
+  <link href="https://xiongm.github.io/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -47,14 +47,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="http://localhost:4000/">Cowboybebop's Notes</a>
+        <a class="navbar-brand" href="https://xiongm.github.io/">Cowboybebop's Notes</a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><a href="http://localhost:4000/">/home</a></li>
-          <li><a href="http://localhost:4000/archive.html">/archive</a></li>
-          <li><a href="http://localhost:4000/tags.html">/tags</a></li>
-          <li><a href="http://localhost:4000/about.html">/about</a></li>
+          <li><a href="https://xiongm.github.io/">/home</a></li>
+          <li><a href="https://xiongm.github.io/archive.html">/archive</a></li>
+          <li><a href="https://xiongm.github.io/tags.html">/tags</a></li>
+          <li><a href="https://xiongm.github.io/about.html">/about</a></li>
         </ul>
       </div>
     </div>
@@ -68,28 +68,31 @@
         <div class="col-md-8">
           <div class="well">
             
+  <div class="post-meta">
+  <div class="post-time">
+    <i class="fa fa-calendar"></i>
+    <time datetime='2016-09-12'>12 Sep 2016</time>
+  </div>
+  <ul>
+    
+    <li><a href="https://xiongm.github.io/tag/modernc++">modernc++</a></li>
+    
+  </ul>
+  </div>
+
   <h2 class="post-title">
-    <a href="http://localhost:4000/2016/09/item-22-when-using-the-pimpl-idiom-define-special-member-functions-in-the-implementation-file">
+    <a href="https://xiongm.github.io/2016/09/item-22-when-using-the-pimpl-idiom-define-special-member-functions-in-the-implementation-file">
       Item 22: When using the Pimpl Idiom, define special member functions in the implementation file
     </a>
-    <p><blockquote>
-<h3 class="p1">• The Pimpl Idiom decreases build times by reducing compilation dependencies between class clients and class implementations.</h3>
-<h3 class="p1">• For <span class="s1">std::unique_ptr pImpl </span>pointers, declare special member functions in the class header, but implement them in the implementation file. Do this even if the default function implementations are acceptable.</h3>
-</blockquote>
-</p>
   </h2>
+  <div class="post-content">
+  <blockquote>
+  <p>The Pimpl Idiom decreases build times by reducing compilation dependencies between class clients and class implementations.<br />
+  For std::unique_ptr pImpl pointers, declare special member functions in the class header, but implement them in the implementation file. Do this even if the default function implementations are acceptable.</p>
+</blockquote>
 
-  <div class="post-meta">
-  <div class="post-time">
-    <i class="fa fa-calendar"></i>
-    <time datetime='2016-09-12'>12 Sep 2016</time>
   </div>
-  <ul>
-    
-    <li><a href="http://localhost:4000/tag/modernc++">modernc++</a></li>
-    
-  </ul>
-</div>
+
 
   <div class="post-descr">
     <p>
@@ -97,31 +100,29 @@
     </p>
   </div>
   
+  <div class="post-meta">
+  <div class="post-time">
+    <i class="fa fa-calendar"></i>
+    <time datetime='2016-09-12'>12 Sep 2016</time>
+  </div>
+  <ul>
+    
+    <li><a href="https://xiongm.github.io/tag/modernc++">modernc++</a></li>
+    
+  </ul>
+  </div>
+
   <h2 class="post-title">
-    <a href="http://localhost:4000/2016/09/item-21-prefer-stdmake_unique-and-stdmake_shared-to-direct-use-of-new">
+    <a href="https://xiongm.github.io/2016/09/item-21-prefer-stdmake_unique-and-stdmake_shared-to-direct-use-of-new">
       Item 21 Prefer std::make_unique and std::make_shared to direct use of new.
     </a>
-    <p><blockquote>
-<h3 class="p1">Compared to direct use of <span class="s1">new</span>, <span class="s1">make </span>functions eliminate source code duplication,provides cleaner, concise codes, improve exception safety, and, for <span class="s1">std::make_shared </span>and <span class="s1">std::allo</span><span class="s1">cate_shared</span>, generate code that’s smaller and faster.</h3>
-</blockquote>
-<ul>
-<li>exception safety - by merging two steps (object creation followed by shared_ptr creation) into one, eliminates potential memory leak</li>
-<li>faster code - by making one memory allocation requests to system</li>
-</ul>
-</p>
   </h2>
+  <div class="post-content">
+  <p>Compared to direct use of new, make functions eliminate source code duplication,provides cleaner, concise codes, improve exception safety, and, for std::make_shared and std::allocate_shared, generate code that s smaller and faster.</p>
 
-  <div class="post-meta">
-  <div class="post-time">
-    <i class="fa fa-calendar"></i>
-    <time datetime='2016-09-12'>12 Sep 2016</time>
+
   </div>
-  <ul>
-    
-    <li><a href="http://localhost:4000/tag/modernc++">modernc++</a></li>
-    
-  </ul>
-</div>
+
 
   <div class="post-descr">
     <p>
@@ -129,49 +130,29 @@
     </p>
   </div>
   
+  <div class="post-meta">
+  <div class="post-time">
+    <i class="fa fa-calendar"></i>
+    <time datetime='2016-09-12'>12 Sep 2016</time>
+  </div>
+  <ul>
+    
+    <li><a href="https://xiongm.github.io/tag/modernc++">modernc++</a></li>
+    
+  </ul>
+  </div>
+
   <h2 class="post-title">
-    <a href="http://localhost:4000/2016/09/item-20-use-stdweak_ptr-for-stdshared_ptr-like-pointers-that-can-dangle">
+    <a href="https://xiongm.github.io/2016/09/item-20-use-stdweak_ptr-for-stdshared_ptr-like-pointers-that-can-dangle">
       Item 20: Use std::weak_ptr for std::shared_ptr like pointers that can dangle
     </a>
-    <p><p>weak_ptr is a smart pointer that acts like shared_ptr, but doesn't contribute to ref counting. It can tell if a object it points to has been destroyed or not (by using expire()) weak_ptr CANNOT be dereferenced. You have to convert it to shared_ptr to be able to use it. Thus weak_ptr isn't a standalone smart pointer, it is a augmentation to shared_ptr.</p>
-<p>The property that weak_ptr isn't a standalone smart pointer can be reflected by how it's constructed, usually weak_ptr is constructed from a shared_ptr.</p>
-<p>[code language="cpp"]</p>
-<p>auto sp = make_shared&lt;MyObject&gt;();</p>
-<p>weak_ptr&lt;MyObject&gt; wp(sp); // doesn't increment p's ref count<br />
-...<br />
-sp = nullptr; // sp is gone. remember copy assignment operator both increment and decrement</p>
-<p>if (wp.expired()) // test if the underlying object dangles, in this case true<br />
-{</p>
-<p>}<br />
-[/code]</p>
-<p>To be able to check if an object dangles and if not, returns a shared_ptr, here's what you do</p>
-<p>[code]<br />
-auto sp = make_shared&lt;MyObject&gt;();</p>
-<p>weak_ptr&lt;MyObject&gt; wp(sp);<br />
-...</p>
-<p>shared_ptr&lt;MyObject&gt; sp1 = wp.lock(); // returns a shared_ptr if not expired(), otherwise returns null</p>
-<p>if (sp1)<br />
-{<br />
- ...<br />
-}<br />
-[/code]</p>
-<blockquote>
-<h3>Potential use cases for std::weak_ptr include factory method caching, observer lists, and the prevention of std::shared_ptr cycles,i.e. shared_ptr A points to shared_ptr B and B points to A as well.</h3>
-</blockquote>
-</p>
   </h2>
+  <div class="post-content">
+  <p>weak_ptr is a smart pointer that acts like shared_ptr, but doesn’t contribute to ref counting. It can tell if a object it points to has been destroyed or not (by using expire()) weak_ptr CANNOT be dereferenced. You have to convert it to shared_ptr to be able to use it. Thus weak_ptr isn’t a standalone smart pointer, it is a augmentation to shared_ptr.</p>
 
-  <div class="post-meta">
-  <div class="post-time">
-    <i class="fa fa-calendar"></i>
-    <time datetime='2016-09-12'>12 Sep 2016</time>
+
   </div>
-  <ul>
-    
-    <li><a href="http://localhost:4000/tag/modernc++">modernc++</a></li>
-    
-  </ul>
-</div>
+
 
   <div class="post-descr">
     <p>
@@ -179,59 +160,29 @@ auto sp = make_shared&lt;MyObject&gt;();</p>
     </p>
   </div>
   
+  <div class="post-meta">
+  <div class="post-time">
+    <i class="fa fa-calendar"></i>
+    <time datetime='2016-09-12'>12 Sep 2016</time>
+  </div>
+  <ul>
+    
+    <li><a href="https://xiongm.github.io/tag/modernc++">modernc++</a></li>
+    
+  </ul>
+  </div>
+
   <h2 class="post-title">
-    <a href="http://localhost:4000/2016/09/item-19-use-stdshared_ptr-for-shared-ownership-resource-management">
+    <a href="https://xiongm.github.io/2016/09/item-19-use-stdshared_ptr-for-shared-ownership-resource-management">
       Item 19: Use std::shared_ptr for shared-ownership resource management.
     </a>
-    <p><p>shared_ptr is C++'s way of garbage collector. All shared_ptr holders collectively own the underlying object and when the last holder exits, the object will be destroyed, automatically.</p>
-<p>shared_ptr increment ref count in constructor, copy constructor, and copy assignment operator (copy assignment operator also decrement ref count of the object originally pointed to, so copy assignment operator does both). Note that move constructor <em>DOES NOT </em>increment ref counts.</p>
-<p>shared_ptr has performance implications because it needs to keep book information of the ref count, thus having twice the size of raw pointer. And to be thread safe, it needs to increment and decrement its ref count in atomic operation, which is usually slower than non atomic operation.</p>
-<p>shared_ptr typically has two pointers, one pointing to the object, and another pointing to a control block dynamically allocated shared by all shared_ptrs. The control block should be set up  when first shared_ptr to an object is created. Per C++ 11, control block will be created when</p>
-<ul>
-<li>make_shared is called</li>
-<li>unique_ptr is converted to shared_ptr</li>
-<li>when shared_ptr constructor is called with pointer</li>
-</ul>
-<p>The last approach is probably the most common way of creating a shared_ptr. In reality thou, it is possible that creating two shared_ptrs from the same raw pointer can result in two control blocks being created, thus causing duplicate ref counting, which is bad! See below</p>
-<p>[code language="cpp"]</p>
-<p>auto p = new MyObject();<br />
-shared_ptr&lt;MyObject&gt; a(p); //<br />
-shared_ptr&lt;MyObject&gt; b(p);</p>
-<p>[/code]</p>
-<p>The lesson here is to either use make_shared, or use new directly inside shared_ptr constructor.</p>
-<p>Another way to introduce this kind of duplicate-control-block issue has to do with using <strong><em>this </em></strong>pointer. Sometimes, we have to create shared_ptr out of <em>this</em> pointer after the object has been created, so we can not use the methods mentioned above to avoid passing raw pointer directly to shared_ptr.</p>
-<p>[code language="cpp"]</p>
-<p>vector&lt;shared_ptr&lt;MyObject&gt;&gt; objects;</p>
-<p>// bad! what if there are other shared_ptrs already<br />
-// pointing to the object? meaning that at least one control block<br />
-// has been created, but passing raw pointer to shared_ptr constructor will surely<br />
-// create a control block, resulting in duplicate control blocks<br />
-objects.emplace_back(this);</p>
-<p>[/code]</p>
-<p>This is exactly why we need to use enable_shared_from_this(), in case you have been using this for a while but never ask yourself why</p>
-<p>[code language="cpp"]<br />
-class MyObjects : public std::enable_shared_from_this&lt;MyObjects&gt;<br />
-{<br />
-...<br />
-};<br />
-vector&lt;shared_ptr&lt;MyObject&gt;&gt; objects<br />
-...<br />
-objects.emplace_back(shared_from_this());</p>
-<p>[/code]</p>
-</p>
   </h2>
+  <div class="post-content">
+  <p>shared_ptr is C++’s way of garbage collector. All shared_ptr holders collectively own the underlying object and when the last holder exits, the object will be destroyed, automatically.</p>
 
-  <div class="post-meta">
-  <div class="post-time">
-    <i class="fa fa-calendar"></i>
-    <time datetime='2016-09-12'>12 Sep 2016</time>
+
   </div>
-  <ul>
-    
-    <li><a href="http://localhost:4000/tag/modernc++">modernc++</a></li>
-    
-  </ul>
-</div>
+
 
   <div class="post-descr">
     <p>
@@ -239,57 +190,6 @@ objects.emplace_back(shared_from_this());</p>
     </p>
   </div>
   
-  <h2 class="post-title">
-    <a href="http://localhost:4000/2016/09/item-18-use-stdunique_ptr-for-exclusive-ownership-resource-management">
-      Item 18: Use std::unique_ptr for exclusive-ownership resource management
-    </a>
-    <p><p>unique_ptr is a move-only type, because unique_ptr embodies a exclusive ownership semantics, meaning that you can not have two unique_ptr point to the same underlying object. As a result, unique_ptr cannot be copied, i.e. copy constructor/copy assignment constructor are not defined for unique_ptr.</p>
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-<span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">MyObject</span><span class="o">&gt;</span> <span class="n">a</span><span class="p">(</span><span class="k">new</span> <span class="n">MyObject</span><span class="p">());</span>
-<span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">MyObject</span><span class="o">&gt;</span> <span class="n">b</span><span class="p">(</span><span class="n">a</span><span class="p">);</span> <span class="c1">// error! can not be copy constructed
-</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">MyObject</span><span class="o">&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">move</span><span class="p">(</span><span class="n">a</span><span class="p">);</span> <span class="o">//</span> <span class="n">OK</span><span class="p">,</span> <span class="n">but</span> <span class="n">now</span> <span class="n">a</span> <span class="n">can</span> <span class="n">not</span> <span class="n">be</span> <span class="n">used</span> <span class="n">any</span> <span class="n">more</span></code></pre></figure>
-<p>unique_ptr by default is the same size as raw pointer, thus using unique_ptr incur no difference than using a raw pointer.</p>
-<p>A good use of unique_ptr is simple factory function that initializes and returns unique_ptr. The caller will manage the lifecycle of the object.</p>
-<p>[code language="cpp"]<br />
-class Piece {<br />
- ...<br />
-};<br />
-class Knight : public Piece {<br />
- ...<br />
-};<br />
-class Bishop: public Piece {<br />
- ...<br />
-};<br />
-// variadic template, C++ 11's new feature to support arbitrary number<br />
-// of template arguments with arbitrary type<br />
-typename &lt;typename... Arguments&gt;<br />
-unique_ptr&lt;Piece&gt;<br />
-create_piece(const string &amp; name, Arguments&amp;&amp;... args)<br />
-{<br />
-    unique_ptr&lt;Piece&gt; piece;<br />
-    if (name == &quot;Knight&quot;)<br />
-    {<br />
-       piece.reset(new Knight(forward&lt;Arguments&gt;(args)...));<br />
-    } else if (name == &quot;Bishop&quot;)<br />
-    {<br />
-       piece.reset(new Bishop(forward&lt;Arguments&gt;(args)...));<br />
-    } else<br />
-    {<br />
-       throw std::runtime_error(&quot;unknown type&quot;);<br />
-    }<br />
-    return piece;<br />
-}<br />
-[/code]</p>
-<blockquote>
-<h3>It is easy to convert unique_ptr to shared_ptr, thus making unique_ptr ideal for factory function since you have two options(unique_ptr or shared_ptr)</h3>
-</blockquote>
-<p>Notes:</p>
-<p>Q: Why auto_ptr can't be used with STL but unique_ptr can?</p>
-<p>A: elements in STL container need to be copy constructible and copy assignable, but copying auto_ptr from a STL container will set it to null, thus invalidating this guarantee. unique_ptr implements move semantics, it will use move instead of copy.</p>
-<p>&nbsp;</p>
-</p>
-  </h2>
-
   <div class="post-meta">
   <div class="post-time">
     <i class="fa fa-calendar"></i>
@@ -297,10 +197,59 @@ create_piece(const string &amp; name, Arguments&amp;&amp;... args)<br />
   </div>
   <ul>
     
-    <li><a href="http://localhost:4000/tag/modernc++">modernc++</a></li>
+    <li><a href="https://xiongm.github.io/tag/modernc++">modernc++</a></li>
     
   </ul>
-</div>
+  </div>
+
+  <h2 class="post-title">
+    <a href="https://xiongm.github.io/2016/09/item-18-use-stdunique_ptr-for-exclusive-ownership-resource-management">
+      Item 18: Use std::unique_ptr for exclusive-ownership resource management
+    </a>
+  </h2>
+  <div class="post-content">
+  <p>unique_ptr is a move-only type, because unique_ptr embodies a exclusive ownership semantics, meaning that you can not have two unique_ptr point to the same underlying object. As a result, unique_ptr cannot be copied, i.e. copy constructor/copy assignment constructor are not defined for unique_ptr.</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="n">unique_ptr</span> <span class="n">a</span><span class="p">(</span><span class="k">new</span> <span class="n">MyObject</span><span class="p">());</span>
+<span class="n">unique_ptr</span> <span class="n">b</span><span class="p">(</span><span class="n">a</span><span class="p">);</span> <span class="c1">// error! can not be copy constructed
+</span><span class="n">unique_ptr</span> <span class="n">c</span> <span class="o">=</span> <span class="n">move</span><span class="p">(</span><span class="n">a</span><span class="p">);</span> <span class="o">//</span> <span class="n">OK</span><span class="p">,</span> <span class="n">but</span> <span class="n">now</span> <span class="n">a</span> <span class="n">can</span> <span class="n">not</span> <span class="n">be</span> <span class="n">used</span> <span class="n">any</span> <span class="n">more</span></code></pre></figure>
+
+<p>unique_ptr by default is the same size as raw pointer, thus using unique_ptr incur no difference than using a raw pointer.<br />
+A good use of unique_ptr is simple factory function that initializes and returns unique_ptr. The caller will manage the lifecycle of the object.</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Piece</span> <span class="p">{</span>
+ <span class="p">...</span>
+<span class="p">};</span>
+<span class="k">class</span> <span class="nc">Knight</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Piece</span> <span class="p">{</span>
+ <span class="p">...</span>
+<span class="p">};</span>
+<span class="k">class</span> <span class="nc">Bishop</span><span class="o">:</span> <span class="k">public</span> <span class="n">Piece</span> <span class="p">{</span>
+ <span class="p">...</span>
+<span class="p">};</span>
+<span class="c1">// variadic template, C++ 11's new feature to support arbitrary number
+// of template arguments with arbitrary type
+</span><span class="k">typename</span> <span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">Arguments</span><span class="o">&gt;</span>
+<span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Piece</span><span class="o">&gt;</span>
+<span class="n">create_piece</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="n">Arguments</span><span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Piece</span><span class="o">&gt;</span> <span class="n">piece</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s">"Knight"</span><span class="p">)</span>
+    <span class="p">{</span>
+       <span class="n">piece</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="k">new</span> <span class="n">Knight</span><span class="p">(</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Arguments</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...));</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s">"Bishop"</span><span class="p">)</span>
+    <span class="p">{</span>
+       <span class="n">piece</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="k">new</span> <span class="n">Bishop</span><span class="p">(</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Arguments</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...));</span>
+    <span class="p">}</span> <span class="k">else</span>
+    <span class="p">{</span>
+       <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="s">"unknown type"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">piece</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+
+  </div>
+
 
   <div class="post-descr">
     <p>
@@ -308,28 +257,6 @@ create_piece(const string &amp; name, Arguments&amp;&amp;... args)<br />
     </p>
   </div>
   
-  <h2 class="post-title">
-    <a href="http://localhost:4000/2016/09/item-17-understand-special-member-function-generation">
-      Item 17: Understand special member function generation.
-    </a>
-    <p><blockquote>
-<h3 class="p1">The special member functions are those compilers may generate on their own:default constructor, destructor, copy operations  (C++98) and move operations (C++11). These functions are only generated when lacking of user-defined declaration but user code uses them.</h3>
-</blockquote>
-<p>&nbsp;</p>
-<blockquote>
-<h3 class="p1">Move operations are generated only for classes lacking explicitly declared. move operations, copy operations, and a destructor. Move ctor and move assignment ctor are also dependent. Declaring either one of them will disable generation of the other,i.e. you have to define your own if you want to use it.</h3>
-</blockquote>
-<p>&nbsp;</p>
-<blockquote>
-<h3 class="p1">The copy constructor is generated only for classes lacking an explicitly declared copy constructor, and it’s deleted if a move operation is declared.The copy assignment operator is generated only for classes lacking an explicitly declared copy assignment operator, and it’s deleted if a move operation is declared. Generation of the copy operations in classes with an explicitly declared destructor is still supported in C++11 but deprecated. Copy operations are independent, declaring either one but not the other will not prevent compiler from willing to generate the other.</h3>
-</blockquote>
-<p>&nbsp;</p>
-<blockquote>
-<h3 class="p1">Member function templates never suppress generation of special member functions.</h3>
-</blockquote>
-</p>
-  </h2>
-
   <div class="post-meta">
   <div class="post-time">
     <i class="fa fa-calendar"></i>
@@ -337,10 +264,22 @@ create_piece(const string &amp; name, Arguments&amp;&amp;... args)<br />
   </div>
   <ul>
     
-    <li><a href="http://localhost:4000/tag/modernc++">modernc++</a></li>
+    <li><a href="https://xiongm.github.io/tag/modernc++">modernc++</a></li>
     
   </ul>
-</div>
+  </div>
+
+  <h2 class="post-title">
+    <a href="https://xiongm.github.io/2016/09/item-17-understand-special-member-function-generation">
+      Item 17: Understand special member function generation.
+    </a>
+  </h2>
+  <div class="post-content">
+  <p>The special member functions are those compilers may generate on their own:default constructor, destructor, copy operations  (C++98) and move operations (C++11). These functions are only generated when lacking of user-defined declaration but user code uses them.</p>
+
+
+  </div>
+
 
   <div class="post-descr">
     <p>
@@ -348,37 +287,6 @@ create_piece(const string &amp; name, Arguments&amp;&amp;... args)<br />
     </p>
   </div>
   
-  <h2 class="post-title">
-    <a href="http://localhost:4000/2016/09/item-15-use-constexpr-whenever-possible">
-      Item 15: Use constexpr whenever possible.
-    </a>
-    <p><blockquote>
-<h3 class="p1"><span class="s1">constexpr </span>objects are <span class="s1">const </span>and are initialized with values known during compilation.</h3>
-</blockquote>
-<p>[code language="cpp"]<br />
-int sz;<br />
-constexpr int size = sz; // error, sz not known at compile time<br />
-array&lt;int, size&gt; data; // error, size not known<br />
-constexpr int size2 = 10; //fine, known at compile time<br />
-array&lt;int, size2&gt; data2; // fine<br />
-[/code]</p>
-<blockquote>
-<h3 class="p1"><span class="s1">constexpr </span>functions can produce compile-time results when called with arguments whose values are known during compilation, but can also be used to produce run-time results when arguments are not known during compilation.</h3>
-</blockquote>
-<p>[code language="cpp"]<br />
-constexpr int pow(int num, int exp) noexcept<br />
-{<br />
-return exp? num * pow(num, exp - 1) : 1;<br />
-}</p>
-<p>constexpr auto exp = 3;<br />
-array&lt;int, pow(3, exp)&gt; results; // compile time pow</p>
-<p>int pow = readPow();<br />
-int exp = readExp();<br />
-int result  = pow(pow, exp); // run time pow<br />
-[/code]</p>
-</p>
-  </h2>
-
   <div class="post-meta">
   <div class="post-time">
     <i class="fa fa-calendar"></i>
@@ -386,10 +294,22 @@ int result  = pow(pow, exp); // run time pow<br />
   </div>
   <ul>
     
-    <li><a href="http://localhost:4000/tag/modernc++">modernc++</a></li>
+    <li><a href="https://xiongm.github.io/tag/modernc++">modernc++</a></li>
     
   </ul>
-</div>
+  </div>
+
+  <h2 class="post-title">
+    <a href="https://xiongm.github.io/2016/09/item-15-use-constexpr-whenever-possible">
+      Item 15: Use constexpr whenever possible.
+    </a>
+  </h2>
+  <div class="post-content">
+  <p>constexpr objects are const and are initialized with values known during compilation.</p>
+
+
+  </div>
+
 
   <div class="post-descr">
     <p>
@@ -397,38 +317,6 @@ int result  = pow(pow, exp); // run time pow<br />
     </p>
   </div>
   
-  <h2 class="post-title">
-    <a href="http://localhost:4000/2016/09/item-14-declare-functions-noexcept-if-they-wont-emit-exceptions">
-      Item 14: Declare functions noexcept if they won’t emit exceptions
-    </a>
-    <p><p>C++98 exception specification is not very worthwhile. A change to the spec will easily break client codes. During work on C++11, it is decided that a true exception spec should only care about whether a function should throw or not, that's how noexcept came out.</p>
-<blockquote>
-<h3>noexcept is part of function interface, by default it is false,i.e. the function may throw</h3>
-</blockquote>
-<h3></h3>
-<blockquote>
-<h3>compiler provides more optimization for noexcept function than non-noexcept function.</h3>
-</blockquote>
-<p>[code language="cpp"]<br />
-void foo() throw();  // c++ 98 no throw style<br />
-void bar() noexcept; // c++ 11 no throw style<br />
-[/code]</p>
-<p>In the above code, if foo (i.e. C++ 98 style no throw) violates exception specification and throws, the call stack is unwounded to foo's caller, and terminated. This is guaranteed by spec. But if bar violates exception specification, there's no such guarantee,i.e. runtime will terminate without unwinding call stack to foo's caller.  This difference allows c++ 11's compiler optimizer to avoid having to maintain the call stack in a unwindable state. In contrast, C++ 98's optimizer doesn't have have this optimization flexibility, resulting in more optimized codes in C++11's noexcept function</p>
-<p>[code language="cpp"]<br />
-void foo() throw(); // less optimizable<br />
-void foo(); // default is may throw, thus less optimizable<br />
-void foo() noexcept; // most optimizable<br />
-[/code]</p>
-<blockquote>
-<h3>noexcept is particularly valuable for some operations such as move and swap, since it is needed to guarantee exception safety for some operations that client depends on</h3>
-</blockquote>
-<p>&nbsp;</p>
-<blockquote>
-<h3>Most function are exception neutral, meaning that they won't emit exceptions themselves, but the function they invoke might. These functions are not noexcept</h3>
-</blockquote>
-</p>
-  </h2>
-
   <div class="post-meta">
   <div class="post-time">
     <i class="fa fa-calendar"></i>
@@ -436,10 +324,22 @@ void foo() noexcept; // most optimizable<br />
   </div>
   <ul>
     
-    <li><a href="http://localhost:4000/tag/modernc++">modernc++</a></li>
+    <li><a href="https://xiongm.github.io/tag/modernc++">modernc++</a></li>
     
   </ul>
-</div>
+  </div>
+
+  <h2 class="post-title">
+    <a href="https://xiongm.github.io/2016/09/item-14-declare-functions-noexcept-if-they-wont-emit-exceptions">
+      Item 14: Declare functions noexcept if they won t emit exceptions
+    </a>
+  </h2>
+  <div class="post-content">
+  <p>C++98 exception specification is not very worthwhile. A change to the spec will easily break client codes. During work on C++11, it is decided that a true exception spec should only care about whether a function should throw or not, that’s how noexcept came out.</p>
+
+
+  </div>
+
 
   <div class="post-descr">
     <p>
@@ -447,75 +347,29 @@ void foo() noexcept; // most optimizable<br />
     </p>
   </div>
   
+  <div class="post-meta">
+  <div class="post-time">
+    <i class="fa fa-calendar"></i>
+    <time datetime='2016-09-02'>02 Sep 2016</time>
+  </div>
+  <ul>
+    
+    <li><a href="https://xiongm.github.io/tag/modernc++">modernc++</a></li>
+    
+  </ul>
+  </div>
+
   <h2 class="post-title">
-    <a href="http://localhost:4000/2016/09/item-12-override-specifier-and-member-function-reference-specifiers">
+    <a href="https://xiongm.github.io/2016/09/item-12-override-specifier-and-member-function-reference-specifiers">
       item 12 override specifier and member function reference specifiers
     </a>
-    <p><blockquote>
-<h3 class="p1">Declare overriding virtual functions <span class="s1">override, so if it doesn't override anything, compiler will let you know.</span></h3>
-</blockquote>
-<p>&nbsp;</p>
-<blockquote>
-<h3>member function reference specifiers can limit use of member function to lvalues or rvalues only. This can be useful when you want lvalue to return lvalue and rvalue to return rvalue.</h3>
-</blockquote>
-<p>Consider the following code</p>
-<p>[code language="cpp"]<br />
-class Widget<br />
-{<br />
-public:<br />
-using DataType = std::vector&lt;int&gt;;<br />
-DataType &amp; data()<br />
-{<br />
-  return data_;<br />
-}<br />
-private:<br />
-DataType data_;<br />
-}</p>
-<p>....</p>
-<p>Widget w;</p>
-<p>auto data = w.data(); // copy constructed, b/c w.data() is lvalue</p>
-<p>....<br />
-Widget create_widget();</p>
-<p>auto data = create_widget().data(); // copy constructed as well, but doesn't have to be<br />
-[/code]</p>
-<p>Now by introducing reference specifiers for data(), we can improve this.</p>
-<p>[code language="cpp"]<br />
-class Widget<br />
-{<br />
-public:<br />
-using DataType = std::vector&lt;int&gt;;<br />
-DataType data() &amp;; // used only when (*this) is lvalue<br />
-{<br />
- return data_;<br />
-}</p>
-<p>DataType data() &amp;&amp;; // used only when (*this) is rvalue<br />
-{<br />
-  return std::move(data_); // because (*this) is a temp object!<br />
-}<br />
-private:<br />
-DataType data_;<br />
-}<br />
-...</p>
-<p>Widget w;<br />
-auto data = w.data(); // calls data() &amp; copy constructed<br />
-...<br />
-Widget create_widget();<br />
-auto data = create_widget().data(); // calls data() &amp;&amp; creates a rvalue, so move constructed<br />
-[/code]</p>
-</p>
   </h2>
+  <div class="post-content">
+  <p>Declare overriding virtual functions override, so if it doesn’t override anything, compiler will let you know.</p>
 
-  <div class="post-meta">
-  <div class="post-time">
-    <i class="fa fa-calendar"></i>
-    <time datetime='2016-09-02'>02 Sep 2016</time>
+
   </div>
-  <ul>
-    
-    <li><a href="http://localhost:4000/tag/modernc++">modernc++</a></li>
-    
-  </ul>
-</div>
+
 
   <div class="post-descr">
     <p>
@@ -523,43 +377,6 @@ auto data = create_widget().data(); // calls data() &amp;&amp; creates a rvalue,
     </p>
   </div>
   
-  <h2 class="post-title">
-    <a href="http://localhost:4000/2016/09/prefer-deleted-functions-to-private-undefined-ones">
-      item 11 Prefer deleted functions to private undefined ones
-    </a>
-    <p><blockquote>
-<h3><em>delete </em>key word specify functions that are not defined, thus not meant to be used by clients.</h3>
-</blockquote>
-<p>C++ 98</p>
-<p>[code language="cpp"]</p>
-<p>template &lt;class charT, class traits = char_traits&lt;charT&gt;&gt;<br />
-class basic_ios : public ios_base {<br />
-public:<br />
-…<br />
-private:<br />
-  basic_ios(const basic_ios &amp;); // not defined<br />
-  basic_ios &amp; operator=(const basic_ios &amp;); // not defined<br />
-};<br />
-};</p>
-<p>[/code]</p>
-<p>C++ 11</p>
-<p>[code language="cpp"]<br />
-template &lt;class charT, class traits = char_traits&lt;charT&gt;&gt;<br />
-class basic_ios : public ios_base {<br />
-public:<br />
-…<br />
-  basic_ios(const basic_ios &amp;) = delete;<br />
-  basic_ios &amp; operator=(const basic_ios &amp;) = delete;<br />
-…<br />
-};<br />
-[/code]</p>
-<blockquote>
-<h3>delete can be used with any function, not just member function, to eliminate the possibilities of usage by client</h3>
-</blockquote>
-<p>&nbsp;</p>
-</p>
-  </h2>
-
   <div class="post-meta">
   <div class="post-time">
     <i class="fa fa-calendar"></i>
@@ -567,10 +384,22 @@ public:<br />
   </div>
   <ul>
     
-    <li><a href="http://localhost:4000/tag/modernc++">modernc++</a></li>
+    <li><a href="https://xiongm.github.io/tag/modernc++">modernc++</a></li>
     
   </ul>
-</div>
+  </div>
+
+  <h2 class="post-title">
+    <a href="https://xiongm.github.io/2016/09/prefer-deleted-functions-to-private-undefined-ones">
+      item 11 Prefer deleted functions to private undefined ones
+    </a>
+  </h2>
+  <div class="post-content">
+  <p>delete key word specify functions that are not defined, thus not meant to be used by clients.</p>
+
+
+  </div>
+
 
   <div class="post-descr">
     <p>
@@ -582,7 +411,7 @@ public:<br />
 
 <div class="post-footer">
   <div class="column-full">
-    <h3><a href="http://localhost:4000/archive.html">Blog archive</a></h3>
+    <h3><a href="https://xiongm.github.io/archive.html">Blog archive</a></h3>
   </div>
 </div>
 
