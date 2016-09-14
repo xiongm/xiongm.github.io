@@ -23,8 +23,8 @@ author:
 {% highlight cpp %}
 using namespace std;
 unique_ptr<MyObject> a(new MyObject());
-unique_ptr&lt;MyObject&gt; b(a); // error! can not be copy constructed<br />
-unique_ptr&lt;MyObject&gt; c = move(a); // OK, but now a can not be used any more<br />
+unique_ptr<MyObject> b(a); // error! can not be copy constructed
+unique_ptr<MyObject> c = move(a); // OK, but now a can not be used any more
 {% endhighlight %}
 <p>unique_ptr by default is the same size as raw pointer, thus using unique_ptr incur no difference than using a raw pointer.</p>
 <p>A good use of unique_ptr is simple factory function that initializes and returns unique_ptr. The caller will manage the lifecycle of the object.</p>
