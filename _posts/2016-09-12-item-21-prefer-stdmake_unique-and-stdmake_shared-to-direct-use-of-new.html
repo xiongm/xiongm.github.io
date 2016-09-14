@@ -1,0 +1,29 @@
+---
+layout: post
+title: Item 21 Prefer std::make_unique and std::make_shared to direct use of new.
+date: 2016-09-12 02:04:56.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- C++
+tags:
+- modernc++
+meta:
+  _rest_api_published: '1'
+  _rest_api_client_id: '-1'
+  _publicize_job_id: '26730497786'
+author:
+  login: cowboybebop98
+  email: xiongm@gmail.com
+  display_name: cowboybebop98
+  first_name: ''
+  last_name: ''
+---
+<blockquote>
+<h3 class="p1">Compared to direct use of <span class="s1">new</span>, <span class="s1">make </span>functions eliminate source code duplication,provides cleaner, concise codes, improve exception safety, and, for <span class="s1">std::make_shared </span>and <span class="s1">std::allo</span><span class="s1">cate_shared</span>, generate code that’s smaller and faster.</h3>
+</blockquote>
+<ul>
+<li>exception safety - by merging two steps (object creation followed by shared_ptr creation) into one, eliminates potential memory leak</li>
+<li>faster code - by making one memory allocation requests to system</li>
+</ul>

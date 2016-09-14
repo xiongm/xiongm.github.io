@@ -11,13 +11,13 @@ share: true
 This theme comes with built-in share buttons. You can see them in the bottom f this post.
 To turn them on in the header of your post add:
 
-{% highlight yml %}
+{% highlight yaml %}
 share: true
-{% endhighlight yml %}
+{% endhighlight yaml %}
 
 If you want to disable some of them - go to **_config.yml**:
 
-{% highlight yml%}
+{% highlight yaml %}
 share:
   facebook: true
   twitter: true
@@ -25,7 +25,7 @@ share:
   linkedin: true
   pinterest: true
   email: true
-{% endhighlight yml%}
+{% endhighlight yaml%}
 
 # Add new buttons
 

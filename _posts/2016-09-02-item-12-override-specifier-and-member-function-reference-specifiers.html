@@ -1,0 +1,72 @@
+---
+layout: post
+title: item 12 override specifier and member function reference specifiers
+date: 2016-09-02 02:22:17.000000000 -04:00
+type: post
+published: true
+status: publish
+categories: []
+tags:
+- modernc++
+meta:
+  _rest_api_published: '1'
+  _rest_api_client_id: '-1'
+  _publicize_job_id: '26397067692'
+author:
+  login: cowboybebop98
+  email: xiongm@gmail.com
+  display_name: cowboybebop98
+  first_name: ''
+  last_name: ''
+---
+<blockquote>
+<h3 class="p1">Declare overriding virtual functions <span class="s1">override, so if it doesn't override anything, compiler will let you know.</span></h3>
+</blockquote>
+<p>&nbsp;</p>
+<blockquote>
+<h3>member function reference specifiers can limit use of member function to lvalues or rvalues only. This can be useful when you want lvalue to return lvalue and rvalue to return rvalue.</h3>
+</blockquote>
+<p>Consider the following code</p>
+<p>[code language="cpp"]<br />
+class Widget<br />
+{<br />
+public:<br />
+using DataType = std::vector&lt;int&gt;;<br />
+DataType &amp; data()<br />
+{<br />
+  return data_;<br />
+}<br />
+private:<br />
+DataType data_;<br />
+}</p>
+<p>....</p>
+<p>Widget w;</p>
+<p>auto data = w.data(); // copy constructed, b/c w.data() is lvalue</p>
+<p>....<br />
+Widget create_widget();</p>
+<p>auto data = create_widget().data(); // copy constructed as well, but doesn't have to be<br />
+[/code]</p>
+<p>Now by introducing reference specifiers for data(), we can improve this.</p>
+<p>[code language="cpp"]<br />
+class Widget<br />
+{<br />
+public:<br />
+using DataType = std::vector&lt;int&gt;;<br />
+DataType data() &amp;; // used only when (*this) is lvalue<br />
+{<br />
+ return data_;<br />
+}</p>
+<p>DataType data() &amp;&amp;; // used only when (*this) is rvalue<br />
+{<br />
+  return std::move(data_); // because (*this) is a temp object!<br />
+}<br />
+private:<br />
+DataType data_;<br />
+}<br />
+...</p>
+<p>Widget w;<br />
+auto data = w.data(); // calls data() &amp; copy constructed<br />
+...<br />
+Widget create_widget();<br />
+auto data = create_widget().data(); // calls data() &amp;&amp; creates a rvalue, so move constructed<br />
+[/code]</p>

@@ -1,0 +1,51 @@
+---
+layout: post
+title: item 11 Prefer deleted functions to private undefined ones
+date: 2016-09-01 20:10:31.000000000 -04:00
+type: post
+published: true
+status: publish
+categories: []
+tags:
+- modernc++
+meta:
+  _rest_api_published: '1'
+  _rest_api_client_id: '-1'
+  _publicize_job_id: '26388428337'
+author:
+  login: cowboybebop98
+  email: xiongm@gmail.com
+  display_name: cowboybebop98
+  first_name: ''
+  last_name: ''
+---
+<blockquote>
+<h3><em>delete </em>key word specify functions that are not defined, thus not meant to be used by clients.</h3>
+</blockquote>
+<p>C++ 98</p>
+<p>[code language="cpp"]</p>
+<p>template &lt;class charT, class traits = char_traits&lt;charT&gt;&gt;<br />
+class basic_ios : public ios_base {<br />
+public:<br />
+…<br />
+private:<br />
+  basic_ios(const basic_ios &amp;); // not defined<br />
+  basic_ios &amp; operator=(const basic_ios &amp;); // not defined<br />
+};<br />
+};</p>
+<p>[/code]</p>
+<p>C++ 11</p>
+<p>[code language="cpp"]<br />
+template &lt;class charT, class traits = char_traits&lt;charT&gt;&gt;<br />
+class basic_ios : public ios_base {<br />
+public:<br />
+…<br />
+  basic_ios(const basic_ios &amp;) = delete;<br />
+  basic_ios &amp; operator=(const basic_ios &amp;) = delete;<br />
+…<br />
+};<br />
+[/code]</p>
+<blockquote>
+<h3>delete can be used with any function, not just member function, to eliminate the possibilities of usage by client</h3>
+</blockquote>
+<p>&nbsp;</p>

@@ -3,373 +3,347 @@
 	<channel>
 		<title>Cowboybebop's Notes</title>
 		<description>Software Developer</description>
-		<link>https://xiongm.github.io</link>
-		<atom:link href="https://xiongm.github.io/feed.xml" rel="self" type="application/rss+xml" />
+		<link>http://localhost:4000</link>
+		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>Share buttons</title>
-				<description>&lt;h1 id=&quot;share-buttons&quot;&gt;Share buttons&lt;/h1&gt;
-
-&lt;p&gt;This theme comes with built-in share buttons. You can see them in the bottom f this post.&lt;br /&gt;
-To turn them on in the header of your post add:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yml&quot; data-lang=&quot;yml&quot;&gt;&lt;span class=&quot;s&quot;&gt;share&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;If you want to disable some of them - go to &lt;strong&gt;_config.yml&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yml&quot; data-lang=&quot;yml&quot;&gt;&lt;span class=&quot;s&quot;&gt;share&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;facebook&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;twitter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;gplus&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;linkedin&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;pinterest&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h1 id=&quot;add-new-buttons&quot;&gt;Add new buttons&lt;/h1&gt;
-
-&lt;p&gt;To add new buttons:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;add icon name in &lt;strong&gt;_config.yml&lt;/strong&gt;;&lt;/li&gt;
-  &lt;li&gt;add section in &lt;strong&gt;_includes/share.html&lt;/strong&gt;;&lt;/li&gt;
-  &lt;li&gt;add styles in &lt;strong&gt;css/theme.css&lt;/strong&gt;.&lt;/li&gt;
-&lt;/ol&gt;
+				<title>Item 22: When using the Pimpl Idiom, define special member functions in the implementation file</title>
+				<description>&lt;blockquote&gt;
+&lt;h3 class=&quot;p1&quot;&gt;• The Pimpl Idiom decreases build times by reducing compilation dependencies between class clients and class implementations.&lt;/h3&gt;
+&lt;h3 class=&quot;p1&quot;&gt;• For &lt;span class=&quot;s1&quot;&gt;std::unique_ptr pImpl &lt;/span&gt;pointers, declare special member functions in the class header, but implement them in the implementation file. Do this even if the default function implementations are acceptable.&lt;/h3&gt;
+&lt;/blockquote&gt;
 </description>
-				<pubDate>Sun, 15 May 2016 12:25:06 -0400</pubDate>
-				<link>https://xiongm.github.io/2016/05/share-buttons</link>
-				<guid isPermaLink="true">https://xiongm.github.io/2016/05/share-buttons</guid>
+				<pubDate>Mon, 12 Sep 2016 02:06:47 -0400</pubDate>
+				<link>http://localhost:4000/2016/09/item-22-when-using-the-pimpl-idiom-define-special-member-functions-in-the-implementation-file</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/09/item-22-when-using-the-pimpl-idiom-define-special-member-functions-in-the-implementation-file</guid>
 			</item>
 		
 			<item>
-				<title>Jekyll Dark Clean Theme</title>
-				<description>&lt;p&gt;Here is a sample post for Jekyll-Clean-Dark theme.&lt;/p&gt;
-
+				<title>Item 21 Prefer std::make_unique and std::make_shared to direct use of new.</title>
+				<description>&lt;blockquote&gt;
+&lt;h3 class=&quot;p1&quot;&gt;Compared to direct use of &lt;span class=&quot;s1&quot;&gt;new&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;make &lt;/span&gt;functions eliminate source code duplication,provides cleaner, concise codes, improve exception safety, and, for &lt;span class=&quot;s1&quot;&gt;std::make_shared &lt;/span&gt;and &lt;span class=&quot;s1&quot;&gt;std::allo&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;cate_shared&lt;/span&gt;, generate code that’s smaller and faster.&lt;/h3&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
-  &lt;li&gt;Get it from &lt;a href=&quot;https://github.com/streetturtle/jekyll-clean-dark&quot;&gt;github&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;See the &lt;a href=&quot;http://pavelmakhov.com/jekyll-clean-dark&quot;&gt;live demo&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;See it &lt;a href=&quot;http://pavelmakhov.com&quot;&gt;in action on my blog&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;exception safety - by merging two steps (object creation followed by shared_ptr creation) into one, eliminates potential memory leak&lt;/li&gt;
+&lt;li&gt;faster code - by making one memory allocation requests to system&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;This theme was created on top of &lt;a href=&quot;https://scotte.github.io&quot;&gt;Jekyll Clean theme&lt;/a&gt; by Scotte.&lt;/p&gt;
-
-&lt;p&gt;This theme uses some parts of Twitter Bootstrap, which allows it looks nice on a mobile devices using a collapsable nav bar and hiding the sidebar.&lt;/p&gt;
-
-&lt;p&gt;Here how it looks like on some portable devices:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://xiongm.github.io/images/iphone_portrait.PNG&quot; alt=&quot;My helpful screenshot&quot; class=&quot;center-image&quot; /&gt;&lt;em&gt;iPhone 5 portrait&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://xiongm.github.io/images/iphone_landscape.PNG&quot; alt=&quot;My helpful screenshot&quot; class=&quot;center-image&quot; /&gt;&lt;em&gt;iPhone 5 landscape&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://xiongm.github.io/images/ipad_portrait.PNG&quot; alt=&quot;My helpful screenshot&quot; class=&quot;center-image&quot; /&gt;&lt;em&gt;iPad mini portrait&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://xiongm.github.io/images/ipad_landscape.PNG&quot; alt=&quot;My helpful screenshot&quot; class=&quot;center-image&quot; /&gt;&lt;em&gt;iPad mini landscape&lt;/em&gt;&lt;/p&gt;
 </description>
-				<pubDate>Tue, 01 Dec 2015 11:25:06 -0500</pubDate>
-				<link>https://xiongm.github.io/2015/12/jekyll-clean-theme</link>
-				<guid isPermaLink="true">https://xiongm.github.io/2015/12/jekyll-clean-theme</guid>
+				<pubDate>Mon, 12 Sep 2016 02:04:56 -0400</pubDate>
+				<link>http://localhost:4000/2016/09/item-21-prefer-stdmake_unique-and-stdmake_shared-to-direct-use-of-new</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/09/item-21-prefer-stdmake_unique-and-stdmake_shared-to-direct-use-of-new</guid>
 			</item>
 		
 			<item>
-				<title>Text formatting</title>
-				<description>&lt;p&gt;Some examples of text formating for some common text elements.&lt;/p&gt;
-
-&lt;h1 id=&quot;headers&quot;&gt;Headers&lt;/h1&gt;
-
-&lt;h1 id=&quot;header1&quot;&gt;Header1&lt;/h1&gt;
-
-&lt;h2 id=&quot;header2&quot;&gt;Header2&lt;/h2&gt;
-
-&lt;h3 id=&quot;header3&quot;&gt;Header3&lt;/h3&gt;
-
-&lt;h4 id=&quot;header4&quot;&gt;Header4&lt;/h4&gt;
-
-&lt;h1 id=&quot;emphasis&quot;&gt;Emphasis&lt;/h1&gt;
-
-&lt;p&gt;Italics: &lt;code class=&quot;highlighter-rouge&quot;&gt;*asterisks*&lt;/code&gt; -&amp;gt; &lt;em&gt;asterisks&lt;/em&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;_underscores_&lt;/code&gt; -&amp;gt; &lt;em&gt;underscores&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Bold: &lt;code class=&quot;highlighter-rouge&quot;&gt;**asterisks**&lt;/code&gt; -&amp;gt; &lt;strong&gt;asterisks&lt;/strong&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;__underscores__&lt;/code&gt; -&amp;gt; &lt;strong&gt;underscores&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;You also can combine them: &lt;code class=&quot;highlighter-rouge&quot;&gt;**asterisks and _underscores_**&lt;/code&gt; -&amp;gt; &lt;strong&gt;asterisks and &lt;em&gt;underscores&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h1 id=&quot;blockquotes-and-notes&quot;&gt;Blockquotes and notes&lt;/h1&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&amp;gt;Blockquotes&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
+				<title>Item 20: Use std::weak_ptr for std::shared_ptr like pointers that can dangle</title>
+				<description>&lt;p&gt;weak_ptr is a smart pointer that acts like shared_ptr, but doesn't contribute to ref counting. It can tell if a object it points to has been destroyed or not (by using expire()) weak_ptr CANNOT be dereferenced. You have to convert it to shared_ptr to be able to use it. Thus weak_ptr isn't a standalone smart pointer, it is a augmentation to shared_ptr.&lt;/p&gt;
+&lt;p&gt;The property that weak_ptr isn't a standalone smart pointer can be reflected by how it's constructed, usually weak_ptr is constructed from a shared_ptr.&lt;/p&gt;
+&lt;p&gt;[code language=&quot;cpp&quot;]&lt;/p&gt;
+&lt;p&gt;auto sp = make_shared&amp;lt;MyObject&amp;gt;();&lt;/p&gt;
+&lt;p&gt;weak_ptr&amp;lt;MyObject&amp;gt; wp(sp); // doesn't increment p's ref count&lt;br /&gt;
+...&lt;br /&gt;
+sp = nullptr; // sp is gone. remember copy assignment operator both increment and decrement&lt;/p&gt;
+&lt;p&gt;if (wp.expired()) // test if the underlying object dangles, in this case true&lt;br /&gt;
+{&lt;/p&gt;
+&lt;p&gt;}&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;To be able to check if an object dangles and if not, returns a shared_ptr, here's what you do&lt;/p&gt;
+&lt;p&gt;[code]&lt;br /&gt;
+auto sp = make_shared&amp;lt;MyObject&amp;gt;();&lt;/p&gt;
+&lt;p&gt;weak_ptr&amp;lt;MyObject&amp;gt; wp(sp);&lt;br /&gt;
+...&lt;/p&gt;
+&lt;p&gt;shared_ptr&amp;lt;MyObject&amp;gt; sp1 = wp.lock(); // returns a shared_ptr if not expired(), otherwise returns null&lt;/p&gt;
+&lt;p&gt;if (sp1)&lt;br /&gt;
+{&lt;br /&gt;
+ ...&lt;br /&gt;
+}&lt;br /&gt;
+[/code]&lt;/p&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;Blockquotes&lt;/p&gt;
+&lt;h3&gt;Potential use cases for std::weak_ptr include factory method caching, observer lists, and the prevention of std::shared_ptr cycles,i.e. shared_ptr A points to shared_ptr B and B points to A as well.&lt;/h3&gt;
 &lt;/blockquote&gt;
-
-&lt;p&gt;Using very cool &lt;a href=&quot;http://kramdown.gettalong.org/quickref.html#block-attributes&quot;&gt;feature&lt;/a&gt; of kramdown which allows to assign any attribute to a block-level element I’ve added note and warning:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&amp;gt;Note 
-&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;: .note&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;blockquote class=&quot;note&quot;&gt;
-  &lt;p&gt;Note&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&amp;gt;Warning 
-&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;: .note .warning&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;blockquote class=&quot;note warning&quot;&gt;
-  &lt;p&gt;Warning&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;keyboard-buttons&quot;&gt;Keyboard buttons&lt;/h1&gt;
-
-&lt;p&gt;In case you need to show some keyboard shortcut like &lt;code class=&quot;key highlighter-rouge&quot;&gt;Ctrl&lt;/code&gt;+&lt;code class=&quot;key highlighter-rouge&quot;&gt;A&lt;/code&gt; use following construction:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;Ctrl&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;: .key&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;+&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;A&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;:.key&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Example of keyboard shortcut in terminal:&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;key highlighter-rouge&quot;&gt;Ctrl&lt;/code&gt; + &lt;code class=&quot;key highlighter-rouge&quot;&gt;A&lt;/code&gt; = Move cursor to beginning of line&lt;br /&gt;
-&lt;code class=&quot;key highlighter-rouge&quot;&gt;Ctrl&lt;/code&gt; + &lt;code class=&quot;key highlighter-rouge&quot;&gt;E&lt;/code&gt; = Move cursor to end of line&lt;br /&gt;
-&lt;code class=&quot;key highlighter-rouge&quot;&gt;Ctrl&lt;/code&gt; + &lt;code class=&quot;key highlighter-rouge&quot;&gt;C&lt;/code&gt; = kills the current process.&lt;br /&gt;
-&lt;code class=&quot;key highlighter-rouge&quot;&gt;Ctrl&lt;/code&gt; + &lt;code class=&quot;key highlighter-rouge&quot;&gt;Z&lt;/code&gt; = sends the current process to the background.&lt;br /&gt;
-&lt;code class=&quot;key highlighter-rouge&quot;&gt;Ctrl&lt;/code&gt; + &lt;code class=&quot;key highlighter-rouge&quot;&gt;D&lt;/code&gt; = logs you out.&lt;br /&gt;
-&lt;code class=&quot;key highlighter-rouge&quot;&gt;Ctrl&lt;/code&gt; + &lt;code class=&quot;key highlighter-rouge&quot;&gt;R&lt;/code&gt; = finds the last command matching the entered letters.&lt;/p&gt;
 </description>
-				<pubDate>Mon, 02 Nov 2015 11:25:06 -0500</pubDate>
-				<link>https://xiongm.github.io/2015/11/text-formatting</link>
-				<guid isPermaLink="true">https://xiongm.github.io/2015/11/text-formatting</guid>
+				<pubDate>Mon, 12 Sep 2016 02:00:12 -0400</pubDate>
+				<link>http://localhost:4000/2016/09/item-20-use-stdweak_ptr-for-stdshared_ptr-like-pointers-that-can-dangle</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/09/item-20-use-stdweak_ptr-for-stdshared_ptr-like-pointers-that-can-dangle</guid>
 			</item>
 		
 			<item>
-				<title>Installation</title>
-				<description>&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
-
-&lt;p&gt;If you dont’t have your own blog you can clone this repository and put your articles in a &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; folder.&lt;br /&gt;
-If you already have your own blog then I think you can clone this repository and copy-paste content keeping your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; folder.&lt;/p&gt;
-
-&lt;p&gt;After you will have to set up your &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;license&quot;&gt;License&lt;/h2&gt;
-
-&lt;p&gt;The content of this theme is distributed and licensed under a &lt;a href=&quot;https://creativecommons.org/licenses/by/4.0/legalcode&quot;&gt;Creative Commons Attribution 4.0 License&lt;/a&gt;&lt;/p&gt;
-
+				<title>Item 19: Use std::shared_ptr for shared-ownership resource management.</title>
+				<description>&lt;p&gt;shared_ptr is C++'s way of garbage collector. All shared_ptr holders collectively own the underlying object and when the last holder exits, the object will be destroyed, automatically.&lt;/p&gt;
+&lt;p&gt;shared_ptr increment ref count in constructor, copy constructor, and copy assignment operator (copy assignment operator also decrement ref count of the object originally pointed to, so copy assignment operator does both). Note that move constructor &lt;em&gt;DOES NOT &lt;/em&gt;increment ref counts.&lt;/p&gt;
+&lt;p&gt;shared_ptr has performance implications because it needs to keep book information of the ref count, thus having twice the size of raw pointer. And to be thread safe, it needs to increment and decrement its ref count in atomic operation, which is usually slower than non atomic operation.&lt;/p&gt;
+&lt;p&gt;shared_ptr typically has two pointers, one pointing to the object, and another pointing to a control block dynamically allocated shared by all shared_ptrs. The control block should be set up  when first shared_ptr to an object is created. Per C++ 11, control block will be created when&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;make_shared is called&lt;/li&gt;
+&lt;li&gt;unique_ptr is converted to shared_ptr&lt;/li&gt;
+&lt;li&gt;when shared_ptr constructor is called with pointer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The last approach is probably the most common way of creating a shared_ptr. In reality thou, it is possible that creating two shared_ptrs from the same raw pointer can result in two control blocks being created, thus causing duplicate ref counting, which is bad! See below&lt;/p&gt;
+&lt;p&gt;[code language=&quot;cpp&quot;]&lt;/p&gt;
+&lt;p&gt;auto p = new MyObject();&lt;br /&gt;
+shared_ptr&amp;lt;MyObject&amp;gt; a(p); //&lt;br /&gt;
+shared_ptr&amp;lt;MyObject&amp;gt; b(p);&lt;/p&gt;
+&lt;p&gt;[/code]&lt;/p&gt;
+&lt;p&gt;The lesson here is to either use make_shared, or use new directly inside shared_ptr constructor.&lt;/p&gt;
+&lt;p&gt;Another way to introduce this kind of duplicate-control-block issue has to do with using &lt;strong&gt;&lt;em&gt;this &lt;/em&gt;&lt;/strong&gt;pointer. Sometimes, we have to create shared_ptr out of &lt;em&gt;this&lt;/em&gt; pointer after the object has been created, so we can not use the methods mentioned above to avoid passing raw pointer directly to shared_ptr.&lt;/p&gt;
+&lt;p&gt;[code language=&quot;cpp&quot;]&lt;/p&gt;
+&lt;p&gt;vector&amp;lt;shared_ptr&amp;lt;MyObject&amp;gt;&amp;gt; objects;&lt;/p&gt;
+&lt;p&gt;// bad! what if there are other shared_ptrs already&lt;br /&gt;
+// pointing to the object? meaning that at least one control block&lt;br /&gt;
+// has been created, but passing raw pointer to shared_ptr constructor will surely&lt;br /&gt;
+// create a control block, resulting in duplicate control blocks&lt;br /&gt;
+objects.emplace_back(this);&lt;/p&gt;
+&lt;p&gt;[/code]&lt;/p&gt;
+&lt;p&gt;This is exactly why we need to use enable_shared_from_this(), in case you have been using this for a while but never ask yourself why&lt;/p&gt;
+&lt;p&gt;[code language=&quot;cpp&quot;]&lt;br /&gt;
+class MyObjects : public std::enable_shared_from_this&amp;lt;MyObjects&amp;gt;&lt;br /&gt;
+{&lt;br /&gt;
+...&lt;br /&gt;
+};&lt;br /&gt;
+vector&amp;lt;shared_ptr&amp;lt;MyObject&amp;gt;&amp;gt; objects&lt;br /&gt;
+...&lt;br /&gt;
+objects.emplace_back(shared_from_this());&lt;/p&gt;
+&lt;p&gt;[/code]&lt;/p&gt;
+</description>
+				<pubDate>Mon, 12 Sep 2016 01:12:28 -0400</pubDate>
+				<link>http://localhost:4000/2016/09/item-19-use-stdshared_ptr-for-shared-ownership-resource-management</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/09/item-19-use-stdshared_ptr-for-shared-ownership-resource-management</guid>
+			</item>
+		
+			<item>
+				<title>Item 18: Use std::unique_ptr for exclusive-ownership resource management</title>
+				<description>&lt;p&gt;unique_ptr is a move-only type, because unique_ptr embodies a exclusive ownership semantics, meaning that you can not have two unique_ptr point to the same underlying object. As a result, unique_ptr cannot be copied, i.e. copy constructor/copy assignment constructor are not defined for unique_ptr.&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;unique_ptr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MyObject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;unique_ptr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// error! can not be copy constructed&amp;lt;br /&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;unique_ptr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;move&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// OK, but now a can not be used any more&amp;lt;br /&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;unique_ptr by default is the same size as raw pointer, thus using unique_ptr incur no difference than using a raw pointer.&lt;/p&gt;
+&lt;p&gt;A good use of unique_ptr is simple factory function that initializes and returns unique_ptr. The caller will manage the lifecycle of the object.&lt;/p&gt;
+&lt;p&gt;[code language=&quot;cpp&quot;]&lt;br /&gt;
+class Piece {&lt;br /&gt;
+ ...&lt;br /&gt;
+};&lt;br /&gt;
+class Knight : public Piece {&lt;br /&gt;
+ ...&lt;br /&gt;
+};&lt;br /&gt;
+class Bishop: public Piece {&lt;br /&gt;
+ ...&lt;br /&gt;
+};&lt;br /&gt;
+// variadic template, C++ 11's new feature to support arbitrary number&lt;br /&gt;
+// of template arguments with arbitrary type&lt;br /&gt;
+typename &amp;lt;typename... Arguments&amp;gt;&lt;br /&gt;
+unique_ptr&amp;lt;Piece&amp;gt;&lt;br /&gt;
+create_piece(const string &amp;amp; name, Arguments&amp;amp;&amp;amp;... args)&lt;br /&gt;
+{&lt;br /&gt;
+    unique_ptr&amp;lt;Piece&amp;gt; piece;&lt;br /&gt;
+    if (name == &amp;quot;Knight&amp;quot;)&lt;br /&gt;
+    {&lt;br /&gt;
+       piece.reset(new Knight(forward&amp;lt;Arguments&amp;gt;(args)...));&lt;br /&gt;
+    } else if (name == &amp;quot;Bishop&amp;quot;)&lt;br /&gt;
+    {&lt;br /&gt;
+       piece.reset(new Bishop(forward&amp;lt;Arguments&amp;gt;(args)...));&lt;br /&gt;
+    } else&lt;br /&gt;
+    {&lt;br /&gt;
+       throw std::runtime_error(&amp;quot;unknown type&amp;quot;);&lt;br /&gt;
+    }&lt;br /&gt;
+    return piece;&lt;br /&gt;
+}&lt;br /&gt;
+[/code]&lt;/p&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;This license lets others distribute, remix, tweak, and build upon your work,&lt;br /&gt;
-even commercially, as long as they credit you for the original creation. This&lt;br /&gt;
-is the most accommodating of licenses offered. Recommended for maximum&lt;br /&gt;
-dissemination and use of licensed materials.&lt;/p&gt;
+&lt;h3&gt;It is easy to convert unique_ptr to shared_ptr, thus making unique_ptr ideal for factory function since you have two options(unique_ptr or shared_ptr)&lt;/h3&gt;
 &lt;/blockquote&gt;
-
-&lt;p&gt;In other words: you can do anything you want with this theme on any site, just please&lt;br /&gt;
-provide a link to the original theme on github.&lt;/p&gt;
-
-&lt;p&gt;This theme includes the following files which are the properties of their&lt;br /&gt;
-respective owners:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;js/bootstrap.min.js - &lt;a href=&quot;http://getbootstrap.com&quot;&gt;bootstrap&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;css/bootstrap.min.css - &lt;a href=&quot;http://getbootstrap.com&quot;&gt;bootstrap&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;js/jquery.min.js - &lt;a href=&quot;https://jquery.com&quot;&gt;jquery&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Notes:&lt;/p&gt;
+&lt;p&gt;Q: Why auto_ptr can't be used with STL but unique_ptr can?&lt;/p&gt;
+&lt;p&gt;A: elements in STL container need to be copy constructible and copy assignable, but copying auto_ptr from a STL container will set it to null, thus invalidating this guarantee. unique_ptr implements move semantics, it will use move instead of copy.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
 </description>
-				<pubDate>Sun, 01 Nov 2015 11:25:06 -0500</pubDate>
-				<link>https://xiongm.github.io/2015/11/installation</link>
-				<guid isPermaLink="true">https://xiongm.github.io/2015/11/installation</guid>
+				<pubDate>Sun, 11 Sep 2016 22:12:48 -0400</pubDate>
+				<link>http://localhost:4000/2016/09/item-18-use-stdunique_ptr-for-exclusive-ownership-resource-management</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/09/item-18-use-stdunique_ptr-for-exclusive-ownership-resource-management</guid>
 			</item>
 		
 			<item>
-				<title>Images</title>
-				<description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;This theme supports two types of images:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;inline images: &lt;img src=&quot;https://xiongm.github.io/images/batWid1.png&quot; alt=&quot;Battery Widget&quot; /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;![Battery Widget]({{ site.url | append:site.baseurl }}/images/batWid1.png)&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;centered images with caption (optionally):&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://xiongm.github.io/images/iphone_landscape.PNG&quot; alt=&quot;screenshot&quot; class=&quot;center-image&quot; /&gt;&lt;em&gt;iPhone 5 landscape&lt;/em&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;![screenshot]({{ site.baseurl | prepend:site.url}}/images/iphone_landscape.PNG){: .center-image }*iPhone 5 landscape*&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;You can apply your own styles to image by creating css class with style:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.custom-image&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;your&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;style&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;And then applying your style just after the image in curly brackets with colon:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;[!image](path to image){:.custom-image}
- &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
+				<title>Item 17: Understand special member function generation.</title>
+				<description>&lt;blockquote&gt;
+&lt;h3 class=&quot;p1&quot;&gt;The special member functions are those compilers may generate on their own:default constructor, destructor, copy operations  (C++98) and move operations (C++11). These functions are only generated when lacking of user-defined declaration but user code uses them.&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h3 class=&quot;p1&quot;&gt;Move operations are generated only for classes lacking explicitly declared. move operations, copy operations, and a destructor. Move ctor and move assignment ctor are also dependent. Declaring either one of them will disable generation of the other,i.e. you have to define your own if you want to use it.&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h3 class=&quot;p1&quot;&gt;The copy constructor is generated only for classes lacking an explicitly declared copy constructor, and it’s deleted if a move operation is declared.The copy assignment operator is generated only for classes lacking an explicitly declared copy assignment operator, and it’s deleted if a move operation is declared. Generation of the copy operations in classes with an explicitly declared destructor is still supported in C++11 but deprecated. Copy operations are independent, declaring either one but not the other will not prevent compiler from willing to generate the other.&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h3 class=&quot;p1&quot;&gt;Member function templates never suppress generation of special member functions.&lt;/h3&gt;
+&lt;/blockquote&gt;
 </description>
-				<pubDate>Thu, 01 Oct 2015 12:25:06 -0400</pubDate>
-				<link>https://xiongm.github.io/2015/10/images</link>
-				<guid isPermaLink="true">https://xiongm.github.io/2015/10/images</guid>
+				<pubDate>Tue, 06 Sep 2016 01:46:53 -0400</pubDate>
+				<link>http://localhost:4000/2016/09/item-17-understand-special-member-function-generation</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/09/item-17-understand-special-member-function-generation</guid>
 			</item>
 		
 			<item>
-				<title>Sample post with code snippets</title>
-				<description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;For code syntax coloration I’m using Darcula theme from Intellij IDEA, which I’ve found in this post &lt;a href=&quot;http://smasue.github.io/pygments-darcula/&quot;&gt;Darcula theme for Pygments&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;XML with line numbers (linenos flag), &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;highlight&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;xml&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;linenos&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;rss&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;version=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2.0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:atom=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.w3.org/2005/Atom&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;channel&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;{{ site.name }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;description&amp;gt;&lt;/span&gt;{{ site.description }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/description&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&amp;gt;&lt;/span&gt;{{site.baseurl | prepend:site.url}}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/link&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;atom:link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{site.baseurl | prepend:site.url}}/feed.xml&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;self&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;application/rss+xml&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-    {% for post in site.posts limit:10 %}
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;item&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;{{ post.title }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;description&amp;gt;&lt;/span&gt;{{ post.content | xml_escape }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/description&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;pubDate&amp;gt;&lt;/span&gt;{{ post.date | date: &quot;%a, %d %b %Y %H:%M:%S %z&quot; }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/pubDate&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&amp;gt;&lt;/span&gt;{{post.url | prepend:site.baseurl | prepend:site.url}}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/link&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;guid&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;isPermaLink=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{{post.url | prepend:site.baseurl | prepend:site.url}}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/guid&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/item&amp;gt;&lt;/span&gt;
-    {% endfor %}
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/channel&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/rss&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;JSON:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;employees&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;firstName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;John&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;lastName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Doe&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;firstName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Anna&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;lastName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Smith&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;firstName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Peter&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;lastName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Jones&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;SQL:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cm_content_nodes&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alf_node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alf_qname&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alf_namespace&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ns&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ns_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type_qname_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'http://www.alfresco.org/model/content/1.0'&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;local_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'content'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Java:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getToken&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpClient&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UnsupportedEncodingException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;Cookie&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cookies&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getCookies&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Cookie&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cookie&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cookies&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cookie&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Alfresco-CSRFToken&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)){&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;URLDecoder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;decode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cookie&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+				<title>Item 15: Use constexpr whenever possible.</title>
+				<description>&lt;blockquote&gt;
+&lt;h3 class=&quot;p1&quot;&gt;&lt;span class=&quot;s1&quot;&gt;constexpr &lt;/span&gt;objects are &lt;span class=&quot;s1&quot;&gt;const &lt;/span&gt;and are initialized with values known during compilation.&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;[code language=&quot;cpp&quot;]&lt;br /&gt;
+int sz;&lt;br /&gt;
+constexpr int size = sz; // error, sz not known at compile time&lt;br /&gt;
+array&amp;lt;int, size&amp;gt; data; // error, size not known&lt;br /&gt;
+constexpr int size2 = 10; //fine, known at compile time&lt;br /&gt;
+array&amp;lt;int, size2&amp;gt; data2; // fine&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h3 class=&quot;p1&quot;&gt;&lt;span class=&quot;s1&quot;&gt;constexpr &lt;/span&gt;functions can produce compile-time results when called with arguments whose values are known during compilation, but can also be used to produce run-time results when arguments are not known during compilation.&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;[code language=&quot;cpp&quot;]&lt;br /&gt;
+constexpr int pow(int num, int exp) noexcept&lt;br /&gt;
+{&lt;br /&gt;
+return exp? num * pow(num, exp - 1) : 1;&lt;br /&gt;
+}&lt;/p&gt;
+&lt;p&gt;constexpr auto exp = 3;&lt;br /&gt;
+array&amp;lt;int, pow(3, exp)&amp;gt; results; // compile time pow&lt;/p&gt;
+&lt;p&gt;int pow = readPow();&lt;br /&gt;
+int exp = readExp();&lt;br /&gt;
+int result  = pow(pow, exp); // run time pow&lt;br /&gt;
+[/code]&lt;/p&gt;
 </description>
-				<pubDate>Tue, 01 Sep 2015 12:25:06 -0400</pubDate>
-				<link>https://xiongm.github.io/2015/09/code-syntax-highlighting</link>
-				<guid isPermaLink="true">https://xiongm.github.io/2015/09/code-syntax-highlighting</guid>
+				<pubDate>Sat, 03 Sep 2016 03:21:17 -0400</pubDate>
+				<link>http://localhost:4000/2016/09/item-15-use-constexpr-whenever-possible</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/09/item-15-use-constexpr-whenever-possible</guid>
 			</item>
 		
 			<item>
-				<title>Analytics, tags and comments</title>
-				<description>&lt;h2 id=&quot;analytics&quot;&gt;Analytics&lt;/h2&gt;
-
-&lt;h4 id=&quot;google-analyticshttpwwwgooglecomanalytics&quot;&gt;&lt;a href=&quot;http://www.google.com/analytics/&quot;&gt;Google Analytics&lt;/a&gt;&lt;/h4&gt;
-
-&lt;p&gt;To enable Google Analytics create an account &lt;a href=&quot;https://analytics.google.com&quot;&gt;here&lt;/a&gt;. Then add your tracking id in &lt;code class=&quot;highlighter-rouge&quot;&gt;config.xml&lt;/code&gt;, it should look something like &lt;code class=&quot;highlighter-rouge&quot;&gt;UA-********-1&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;yandex-metricahttpmetricayandexcom&quot;&gt;&lt;a href=&quot;http://metrica.yandex.com&quot;&gt;Yandex Metrica&lt;/a&gt;&lt;/h4&gt;
-
-&lt;p&gt;To enable Yandex Metrica you need to register, create a ‘counter’ and then copy-paste it’s code in &lt;code class=&quot;highlighter-rouge&quot;&gt;/_includes/yandex-metrika.html&lt;/code&gt; file.&lt;/p&gt;
-
-&lt;h2 id=&quot;tags&quot;&gt;Tags&lt;/h2&gt;
-
-&lt;p&gt;Using tags in Jekyll is a bit tricky topic, I used this approach: &lt;a href=&quot;http://charliepark.org/tags-in-jekyll/&quot;&gt;charliepark.org/tags-in-jekyll/&lt;/a&gt;. You can read technical details there. To simply use tags provide list of tags in post header:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;tags:
- - jekyll
- - analytics
- - tags
- - comments&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;And then before pushing your changes to github copy generated folder &lt;code class=&quot;highlighter-rouge&quot;&gt;/_site/tag&lt;/code&gt; in your blog’s root folder, since github pages will not generate it automatically.&lt;/p&gt;
-
-&lt;h2 id=&quot;comments&quot;&gt;Comments&lt;/h2&gt;
-
-&lt;p&gt;To enable &lt;a href=&quot;http://disqus.com&quot;&gt;Disqus&lt;/a&gt; register on the site and then just put your name in &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.xml&lt;/code&gt;. Comments could be switched on and off on per post basis, just put &lt;code class=&quot;highlighter-rouge&quot;&gt;comments: true&lt;/code&gt; to enable them.&lt;/p&gt;
+				<title>Item 14: Declare functions noexcept if they won’t emit exceptions</title>
+				<description>&lt;p&gt;C++98 exception specification is not very worthwhile. A change to the spec will easily break client codes. During work on C++11, it is decided that a true exception spec should only care about whether a function should throw or not, that's how noexcept came out.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h3&gt;noexcept is part of function interface, by default it is false,i.e. the function may throw&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;h3&gt;compiler provides more optimization for noexcept function than non-noexcept function.&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;[code language=&quot;cpp&quot;]&lt;br /&gt;
+void foo() throw();  // c++ 98 no throw style&lt;br /&gt;
+void bar() noexcept; // c++ 11 no throw style&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;In the above code, if foo (i.e. C++ 98 style no throw) violates exception specification and throws, the call stack is unwounded to foo's caller, and terminated. This is guaranteed by spec. But if bar violates exception specification, there's no such guarantee,i.e. runtime will terminate without unwinding call stack to foo's caller.  This difference allows c++ 11's compiler optimizer to avoid having to maintain the call stack in a unwindable state. In contrast, C++ 98's optimizer doesn't have have this optimization flexibility, resulting in more optimized codes in C++11's noexcept function&lt;/p&gt;
+&lt;p&gt;[code language=&quot;cpp&quot;]&lt;br /&gt;
+void foo() throw(); // less optimizable&lt;br /&gt;
+void foo(); // default is may throw, thus less optimizable&lt;br /&gt;
+void foo() noexcept; // most optimizable&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h3&gt;noexcept is particularly valuable for some operations such as move and swap, since it is needed to guarantee exception safety for some operations that client depends on&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h3&gt;Most function are exception neutral, meaning that they won't emit exceptions themselves, but the function they invoke might. These functions are not noexcept&lt;/h3&gt;
+&lt;/blockquote&gt;
 </description>
-				<pubDate>Sat, 01 Aug 2015 12:25:06 -0400</pubDate>
-				<link>https://xiongm.github.io/2015/08/analytics-tags-comments</link>
-				<guid isPermaLink="true">https://xiongm.github.io/2015/08/analytics-tags-comments</guid>
+				<pubDate>Fri, 02 Sep 2016 20:41:23 -0400</pubDate>
+				<link>http://localhost:4000/2016/09/item-14-declare-functions-noexcept-if-they-wont-emit-exceptions</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/09/item-14-declare-functions-noexcept-if-they-wont-emit-exceptions</guid>
 			</item>
 		
 			<item>
-				<title>Social icons</title>
-				<description>&lt;p&gt;You can have social icons which could lead to your social profile.&lt;br /&gt;
-Out-of-the box it has:&lt;/p&gt;
-
-&lt;ul class=&quot;social-media&quot;&gt;
-  &lt;li&gt;
-    &lt;a title=&quot;Github&quot; href=&quot;https://github.com/xiongm&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;fa fa-github fa-2x&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a title=&quot;StackOverflow&quot; href=&quot;http://stackoverflow.com/users/1252056/&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;fa fa-stack-overflow fa-2x&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a title=&quot;LinkedIn&quot; href=&quot;https://www.linkedin.com/in/&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;fa fa-linkedin fa-2x&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a title=&quot;Instagram&quot; href=&quot;https://instagram.com/&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;fa fa-instagram fa-2x&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a title=&quot;Last.fm&quot; href=&quot;http://lastfm.com/user/&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;fa fa-lastfm fa-2x&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a title=&quot;RSS&quot; href=&quot;https://xiongm.github.io/feed.xml&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;fa fa-rss fa-2x&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;They could be setup in &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;To add more icons do following steps:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;choose an icon you want to use: &lt;a href=&quot;https://fortawesome.github.io/Font-Awesome/icons/&quot;&gt;Font Awesome Icons&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;add variable in &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;add icon in &lt;code class=&quot;highlighter-rouge&quot;&gt;social.html&lt;/code&gt; with check if variable exists:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt; {% if site.social.rss %}
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.social.&amp;lt;your_social_variable&amp;gt; }}&quot;&lt;/span&gt; 
-       &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{site.url}}/{{ site.social.&amp;lt;your_social_variable&amp;gt; }}&quot;&lt;/span&gt; 
-       &lt;span class=&quot;na&quot;&gt;target=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;_blank&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;font&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;_awesome_icon&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/i&amp;gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-{% endif %}&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
+				<title>item 12 override specifier and member function reference specifiers</title>
+				<description>&lt;blockquote&gt;
+&lt;h3 class=&quot;p1&quot;&gt;Declare overriding virtual functions &lt;span class=&quot;s1&quot;&gt;override, so if it doesn't override anything, compiler will let you know.&lt;/span&gt;&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h3&gt;member function reference specifiers can limit use of member function to lvalues or rvalues only. This can be useful when you want lvalue to return lvalue and rvalue to return rvalue.&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Consider the following code&lt;/p&gt;
+&lt;p&gt;[code language=&quot;cpp&quot;]&lt;br /&gt;
+class Widget&lt;br /&gt;
+{&lt;br /&gt;
+public:&lt;br /&gt;
+using DataType = std::vector&amp;lt;int&amp;gt;;&lt;br /&gt;
+DataType &amp;amp; data()&lt;br /&gt;
+{&lt;br /&gt;
+  return data_;&lt;br /&gt;
+}&lt;br /&gt;
+private:&lt;br /&gt;
+DataType data_;&lt;br /&gt;
+}&lt;/p&gt;
+&lt;p&gt;....&lt;/p&gt;
+&lt;p&gt;Widget w;&lt;/p&gt;
+&lt;p&gt;auto data = w.data(); // copy constructed, b/c w.data() is lvalue&lt;/p&gt;
+&lt;p&gt;....&lt;br /&gt;
+Widget create_widget();&lt;/p&gt;
+&lt;p&gt;auto data = create_widget().data(); // copy constructed as well, but doesn't have to be&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;Now by introducing reference specifiers for data(), we can improve this.&lt;/p&gt;
+&lt;p&gt;[code language=&quot;cpp&quot;]&lt;br /&gt;
+class Widget&lt;br /&gt;
+{&lt;br /&gt;
+public:&lt;br /&gt;
+using DataType = std::vector&amp;lt;int&amp;gt;;&lt;br /&gt;
+DataType data() &amp;amp;; // used only when (*this) is lvalue&lt;br /&gt;
+{&lt;br /&gt;
+ return data_;&lt;br /&gt;
+}&lt;/p&gt;
+&lt;p&gt;DataType data() &amp;amp;&amp;amp;; // used only when (*this) is rvalue&lt;br /&gt;
+{&lt;br /&gt;
+  return std::move(data_); // because (*this) is a temp object!&lt;br /&gt;
+}&lt;br /&gt;
+private:&lt;br /&gt;
+DataType data_;&lt;br /&gt;
+}&lt;br /&gt;
+...&lt;/p&gt;
+&lt;p&gt;Widget w;&lt;br /&gt;
+auto data = w.data(); // calls data() &amp;amp; copy constructed&lt;br /&gt;
+...&lt;br /&gt;
+Widget create_widget();&lt;br /&gt;
+auto data = create_widget().data(); // calls data() &amp;amp;&amp;amp; creates a rvalue, so move constructed&lt;br /&gt;
+[/code]&lt;/p&gt;
 </description>
-				<pubDate>Wed, 01 Jul 2015 12:25:06 -0400</pubDate>
-				<link>https://xiongm.github.io/2015/07/social-icons</link>
-				<guid isPermaLink="true">https://xiongm.github.io/2015/07/social-icons</guid>
+				<pubDate>Fri, 02 Sep 2016 02:22:17 -0400</pubDate>
+				<link>http://localhost:4000/2016/09/item-12-override-specifier-and-member-function-reference-specifiers</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/09/item-12-override-specifier-and-member-function-reference-specifiers</guid>
+			</item>
+		
+			<item>
+				<title>item 11 Prefer deleted functions to private undefined ones</title>
+				<description>&lt;blockquote&gt;
+&lt;h3&gt;&lt;em&gt;delete &lt;/em&gt;key word specify functions that are not defined, thus not meant to be used by clients.&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;C++ 98&lt;/p&gt;
+&lt;p&gt;[code language=&quot;cpp&quot;]&lt;/p&gt;
+&lt;p&gt;template &amp;lt;class charT, class traits = char_traits&amp;lt;charT&amp;gt;&amp;gt;&lt;br /&gt;
+class basic_ios : public ios_base {&lt;br /&gt;
+public:&lt;br /&gt;
+…&lt;br /&gt;
+private:&lt;br /&gt;
+  basic_ios(const basic_ios &amp;amp;); // not defined&lt;br /&gt;
+  basic_ios &amp;amp; operator=(const basic_ios &amp;amp;); // not defined&lt;br /&gt;
+};&lt;br /&gt;
+};&lt;/p&gt;
+&lt;p&gt;[/code]&lt;/p&gt;
+&lt;p&gt;C++ 11&lt;/p&gt;
+&lt;p&gt;[code language=&quot;cpp&quot;]&lt;br /&gt;
+template &amp;lt;class charT, class traits = char_traits&amp;lt;charT&amp;gt;&amp;gt;&lt;br /&gt;
+class basic_ios : public ios_base {&lt;br /&gt;
+public:&lt;br /&gt;
+…&lt;br /&gt;
+  basic_ios(const basic_ios &amp;amp;) = delete;&lt;br /&gt;
+  basic_ios &amp;amp; operator=(const basic_ios &amp;amp;) = delete;&lt;br /&gt;
+…&lt;br /&gt;
+};&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h3&gt;delete can be used with any function, not just member function, to eliminate the possibilities of usage by client&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+</description>
+				<pubDate>Thu, 01 Sep 2016 20:10:31 -0400</pubDate>
+				<link>http://localhost:4000/2016/09/prefer-deleted-functions-to-private-undefined-ones</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/09/prefer-deleted-functions-to-private-undefined-ones</guid>
 			</item>
 		
 	</channel>

@@ -1,0 +1,243 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cowboybebop's Notes</title>
+  <meta name="theme-color" content="#222222" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://localhost:4000/js/jquery.min.js"></script>
+  <script src="http://localhost:4000/js/bootstrap.min.js"></script>
+  <script src="http://localhost:4000/js/header.js"></script>
+  <script src="http://localhost:4000/js/toc.js"></script>
+  <link href="http://localhost:4000/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://localhost:4000/css/theme.css" rel="stylesheet">
+  <link href="http://localhost:4000/css/syntax.css" rel="stylesheet">
+  <link href="http://localhost:4000/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  
+
+  
+
+
+ <script type="text/javascript">
+  WebFontConfig = {
+    google: {
+      families: ['Ubuntu::latin']
+    }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+</script>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="http://localhost:4000/">Cowboybebop's Notes</a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="http://localhost:4000/">/home</a></li>
+          <li><a href="http://localhost:4000/archive.html">/archive</a></li>
+          <li><a href="http://localhost:4000/tags.html">/tags</a></li>
+          <li><a href="http://localhost:4000/about.html">/about</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<div class="wrapper">
+  <div class="content">
+    <div class="container container-center">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="article">
+            <div class="well">
+              <h1><a href="http://localhost:4000/2016/08/item-1-understand-template-type-deduction">Item 1 Understand template type deduction</a></h1>
+              <div class="post-meta">
+                <div class="post-time">
+                  <i class="fa fa-calendar"></i>
+                  <time>28 Aug 2016</time>
+                </div>
+                <ul>
+                  
+                    <li><a href="http://localhost:4000/tag/C++">C++</a></li>
+                  
+                    <li><a href="http://localhost:4000/tag/modernc++">modernc++</a></li>
+                  
+                </ul>
+              </div>
+              <div class="post-content">
+                <div id="toc" class="toc"></div>
+                <p>Function template looks like the following</p>
+<p>[code language="cpp"]<br />
+template &lt;typename T&gt;<br />
+void f(ParamType param)<br />
+[/code]</p>
+<p>A call to the function looks like this</p>
+<p>[code language="cpp"]<br />
+f(expr)<br />
+[/code]</p>
+<p>During compilation, compiler use expr to deduce types for both T and ParamType and they are usually different. Following are some of the key knowledge points with examples. The quoted messages are from Modern Effective C++ by scott meyers</p>
+<blockquote>
+<h3><em>During template type deduction, arguments that are references are treated as non reference</em></h3>
+</blockquote>
+<p>[code language="cpp"]<br />
+template &lt;typename T&gt;<br />
+void f(T &amp; param)</p>
+<p>int x = 10;<br />
+int &amp; y = x;<br />
+const int z = 15</p>
+<p>f(x) // T is int, param's type is int &amp;<br />
+f(y) // T is int, param's type is int &amp;.<br />
+// Note that y's reference-ness is ignored<br />
+f(z) // T is const int, param's type is const int &amp;<br />
+[/code]</p>
+<blockquote>
+<h3>When deducing types for universal reference parameters, lvalue arguments get special treatment.</h3>
+</blockquote>
+<p>[code language="cpp"]<br />
+template &lt;typename T&gt;<br />
+void f(T &amp;&amp; param)    // universal reference, yes it looks just like rvalue reference</p>
+<p>int x = 10;<br />
+const int y = x;</p>
+<p>// x is a lvalue, when deduced, T is translates to int &amp;<br />
+// so is param's type<br />
+// the only situation in which a expr is deduced to a<br />
+// reference type<br />
+f(x)<br />
+f(y) // similarly, T is const int &amp;, so is param's type<br />
+[/code]</p>
+<blockquote>
+<h3>When deducing types for by-value parameters, const and/or volatile arguments<br />
+are treated as non-const and non-volatile.</h3>
+</blockquote>
+<p>[code language="cpp"]<br />
+template &lt;typename T&gt;<br />
+void f(T param) // pass by value</p>
+<p>int x = 10;<br />
+const int y = x;</p>
+<p>f(x) // T is int, so is param's type<br />
+f(y) // T is int, so is param's type, notice how const is ignored<br />
+[/code]</p>
+
+                
+
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 hidden-xs">
+          <div class="sidebar ">
+  <h2>Recent Posts</h2>
+  <ul>
+    
+    <li><a href="/2016/09/item-22-when-using-the-pimpl-idiom-define-special-member-functions-in-the-implementation-file">Item 22: When using the Pimpl Idiom, define special member functions in the implementation file</a></li>
+    
+    <li><a href="/2016/09/item-21-prefer-stdmake_unique-and-stdmake_shared-to-direct-use-of-new">Item 21 Prefer std::make_unique and std::make_shared to direct use of new.</a></li>
+    
+    <li><a href="/2016/09/item-20-use-stdweak_ptr-for-stdshared_ptr-like-pointers-that-can-dangle">Item 20: Use std::weak_ptr for std::shared_ptr like pointers that can dangle</a></li>
+    
+    <li><a href="/2016/09/item-19-use-stdshared_ptr-for-shared-ownership-resource-management">Item 19: Use std::shared_ptr for shared-ownership resource management.</a></li>
+    
+    <li><a href="/2016/09/item-18-use-stdunique_ptr-for-exclusive-ownership-resource-management">Item 18: Use std::unique_ptr for exclusive-ownership resource management</a></li>
+    
+  </ul>
+</div>
+
+<div class="sidebar">
+  <h2>Tags</h2>
+  <ul>
+    
+      <li><a href="/tag/jekyll">jekyll</a></li>
+    
+      <li><a href="/tag/analytics">analytics</a></li>
+    
+      <li><a href="/tag/tags">tags</a></li>
+    
+      <li><a href="/tag/comments">comments</a></li>
+    
+      <li><a href="/tag/code">code</a></li>
+    
+      <li><a href="/tag/images">images</a></li>
+    
+      <li><a href="/tag/LeetCode">LeetCode</a></li>
+    
+      <li><a href="/tag/C++">C++</a></li>
+    
+      <li><a href="/tag/modernc++">modernc++</a></li>
+    
+  </ul>
+</div>
+
+        </div>
+      </div>
+    </div>
+    
+
+  </div>
+      <footer class="footer-distributed">
+      <div class="container">
+        <div class="footer">
+          <p>Cowboybebop98 &copy; 2016</p>
+          <h6>Follow me</h6>
+
+<ul class="social-media">
+
+  
+    <li>
+      <a title="xiongm on Github" href="https://github.com/xiongm" target="_blank"><i class="fa fa-github fa-2x"></i></a>
+    </li>
+  
+
+  
+    <li>
+      <a title=" on StackOverflow" href="http://stackoverflow.com/users/" target="_blank"><i class="fa fa-stack-overflow fa-2x"></i></a>
+    </li>
+  
+
+  
+
+  
+    <li>
+      <a title=" on Instagram" href="https://instagram.com/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
+    </li>
+  
+
+  
+    <li>
+      <a title=" on Last.fm" href="http://lastfm.com/user/" target="_blank"><i class="fa fa-lastfm fa-2x"></i></a>
+    </li>
+  
+
+  
+    <li>
+      <a title="feed.xml RSS" href="/feed.xml" target="_blank"><i class="fa fa-rss fa-2x"></i></a>
+    </li>
+  
+
+</ul>
+
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+</div>

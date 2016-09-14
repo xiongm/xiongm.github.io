@@ -1,0 +1,33 @@
+---
+layout: post
+title: item 4 know how to view deduced types
+date: 2016-08-31 01:20:44.000000000 -04:00
+type: post
+published: true
+status: publish
+categories: []
+tags:
+- modernc++
+meta:
+  _rest_api_published: '1'
+  _rest_api_client_id: '-1'
+  _publicize_job_id: '26322250542'
+author:
+  login: cowboybebop98
+  email: xiongm@gmail.com
+  display_name: cowboybebop98
+  first_name: ''
+  last_name: ''
+---
+<blockquote>
+<h3>use compiler diagnostics</h3>
+</blockquote>
+<p>[code language="cpp"]</p>
+<p>template &lt;typename T&gt;<br />
+class TD;</p>
+<p>const int n = 0;</p>
+<p>auto x = n;</p>
+<p>auto y = &amp;n;</p>
+<p>TD&lt;decltype(x)&gt; xTD; //error, implicit instantiation of undefined template 'TD&lt;int&gt;'</p>
+<p>TD&lt;decltype(y)&gt; yTD; // error,implicit instantiation of undefined template 'TD&lt;const int *&gt;'</p>
+<p>[/code]</p>
