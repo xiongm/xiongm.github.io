@@ -20,11 +20,11 @@ author:
   first_name: ''
   last_name: ''
 ---
-weak_ptr is a smart pointer that acts like shared_ptr, but doesn't contribute to ref counting. It can tell if a object it points to has been destroyed or not (by using expire()) weak_ptr CANNOT be dereferenced. You have to convert it to shared_ptr to be able to use it. Thus weak_ptr isn't a standalone smart pointer, it is a augmentation to shared_ptr.
+`weak_ptr` is a smart pointer that acts like shared_ptr, but doesn't contribute to ref counting. It can tell if a object it points to has been destroyed or not (by using expire()) weak_ptr CANNOT be dereferenced. You have to convert it to shared_ptr to be able to use it. Thus weak_ptr isn't a standalone smart pointer, it is a augmentation to shared_ptr.
 
 The property that weak_ptr isn't a standalone smart pointer can be reflected by how it's constructed, usually weak_ptr is constructed from a shared_ptr.
 
-{% highlight cpp %}
+~~~cpp
 auto sp = make_shared<MyObject>();
 weak_ptr<MyObject> wp(sp); // doesn't increment p's ref count
 ...
@@ -32,7 +32,8 @@ sp = nullptr; // sp is gone. remember copy assignment operator both increment an
 if (wp.expired()) // test if the underlying object dangles, in this case true
 {
 }
-{% endhighlight %}
+~~~
+
 To be able to check if an object dangles and if not, returns a shared_ptr, here's what you do
 {% highlight cpp %}
 auto sp = make_shared<MyObject>();

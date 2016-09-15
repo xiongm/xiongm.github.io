@@ -22,13 +22,14 @@ $comments: #75715e;
 $linenos: #A9B7C6;
 .highlight {
   margin-bottom: 1.5em;
+  font-size:15px;
   color: $foreground;
   background-color: $background;
   @include rounded(4px);
   pre {
     position: relative;
-    margin: 0;
     font-size:15px;
+    margin: 0;
     padding: 1em;
     overflow-x: auto;
     word-wrap: normal;
