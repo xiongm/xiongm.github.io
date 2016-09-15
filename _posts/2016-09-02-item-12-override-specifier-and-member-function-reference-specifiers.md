@@ -1,6 +1,6 @@
 ---
 layout: post
-title: item 12 override specifier and member function reference specifiers
+title: Item 12 override specifier and member function reference specifiers
 date: 2016-09-02 02:22:17.000000000 -04:00
 type: post
 published: true

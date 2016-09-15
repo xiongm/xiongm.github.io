@@ -1,6 +1,6 @@
 ---
 layout: post
-title: item 11 Prefer deleted functions to private undefined ones
+title: Item 11 Prefer deleted functions to private undefined ones
 date: 2016-09-01 20:10:31.000000000 -04:00
 type: post
 published: true
