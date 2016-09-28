@@ -39,7 +39,7 @@ return exp? num * pow(num, exp - 1) : 1;
 }
 constexpr auto exp = 3;
 array<int, pow(3, exp)> results; // compile time pow
-int pow = readPow();
-int exp = readExp();
+int pow = readPow(); // runtime retrieve 
+int exp = readExp(); // runtime retrieve
 int result  = pow(pow, exp); // run time pow
 {% endhighlight %}
