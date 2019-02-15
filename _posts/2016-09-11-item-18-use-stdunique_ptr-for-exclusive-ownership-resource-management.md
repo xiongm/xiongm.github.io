@@ -63,5 +63,5 @@ It is easy to convert unique_ptr to shared_ptr, thus making unique_ptr ideal for
 
 Notes:
 Q: Why auto_ptr can't be used with STL but unique_ptr can?
-A: elements in STL container need to be copy constructible and copy assignable, but copying auto_ptr from a STL container will set it to null, thus invalidating this guarantee. unique_ptr implements move semantics, it will use move instead of copy.
+A: elements in STL container need to be copy constructible and copy assignable, but copying auto_ptr from a STL container will set it to null, thus invalidating this guarantee. unique_ptr implements move semantics, it will use move instead of copy. In short, the assignment semantics for auto_ptr is undefined, but for unique_ptr, you can use move
 &nbsp;
