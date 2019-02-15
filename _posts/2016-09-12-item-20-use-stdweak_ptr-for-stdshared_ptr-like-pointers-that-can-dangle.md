@@ -46,5 +46,5 @@ if (sp1)
 }
 {% endhighlight %}
 
-Potential use cases for std::weak_ptr include factory method caching, observer lists, and the prevention of std::shared_ptr cycles,i.e. shared_ptr A points to shared_ptr B and B points to A as well.
+Potential use cases for std::weak_ptr include factory method caching, observer lists, and the prevention of std::shared_ptr cycles, e.g. shared_ptr A inside object OA points to OB, shared_ptr B inside object OB points to OA, the destruction of OA and OB will prevent destruction of both objects
 
